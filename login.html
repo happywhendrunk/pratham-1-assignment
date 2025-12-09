@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Find Carer</a>
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Pages ▾</a>
+                </div>
+                <a href="#">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="signin-container">
+        <div class="signin-card">
+
+
+
+            <div class="signin-form-wrapper">
+                <h2 class="signin-header">Sign In to Your Account</h2>
+
+                <form id="signInForm" class="signin-form">
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="john@harmoniehealth.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Remember Me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Sign In <span class="arrow">→</span>
+                    </button>
+
+                    <p class="signup-prompt">
+                        Don't have an account? <a href="#" class="signup-link">Sign Up</a>
+                    </p>
+
+                </form>
+
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Departments</a>
+                    <a href="#">Doctors</a>
+                    <a href="#">Timetable</a>
+                    <a href="#">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="#">Blog</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

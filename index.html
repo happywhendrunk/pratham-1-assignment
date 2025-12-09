@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonie Health</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const appointmentForm = document.getElementById('appointmentForm');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', handleAppointmentSubmission);
+            }
+        });
+
+        // Function to handle form submission and send data to Node.js backend
+        async function handleAppointmentSubmission(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const statusMessage = document.getElementById('appointmentStatusMessage');
+
+            statusMessage.textContent = 'Scheduling appointment...';
+            statusMessage.className = 'mt-4 text-center font-semibold text-blue-600';
+
+            const appointmentData = {
+                name: form.name.value,
+                phone: form.phone.value,
+                email: form.email.value,
+                date: form.date.value,
+                time: form.time.value,
+                reason: form.reason.value,
+                department: form.department.value,
+                timestamp: new Date().toISOString(),
+            };
+
+
+            try {
+                // Send data to the Node.js Express API endpoint
+                // NOTE: This assumes your Node.js server (server.js) is running locally on port 3000
+                const response = await fetch('http://localhost:3000/api/appointments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(appointmentData),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusMessage.textContent = `Appointment scheduled successfully! Booking ID: ${result.id}`;
+                    statusMessage.className = 'mt-4 text-center font-semibold text-green-600';
+                    form.reset(); // Clear the form on success
+                } else {
+                    throw new Error(result.message || 'Failed to schedule appointment on the server.');
+                }
+            } catch (error) {
+                console.error("Error scheduling appointment:", error);
+                statusMessage.textContent = `Error: ${error.message}. Check if your Node.js server is running on http://localhost:3000.`;
+                statusMessage.className = 'mt-4 text-center font-semibold text-red-600';
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Find Carer</a>
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Pages ▾</a>
+                </div>
+                <a href="#">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1>
+                Welcome to <br>
+                <span>Harmonie Health</span>
+            </h1>
+
+            <p class="hero-subtext">
+                At Harmonie Health, we’re on a mission to turn health and well-being
+                into a joyful adventure!
+            </p>
+
+            <a href="/login.html"><button class="login-btn">Login</button></a>
+
+
+            <p class="signup-text">
+                Don’t have an account? <a href="#">Sign up here</a>
+            </p>
+        </div>
+
+        <div class="hero-right">
+            <img src="./images/hero_img1.png" alt="Doctors" class="hero-image">
+        </div>
+    </section>
+
+    <section class="info-card">
+        <div class="info-item">
+            <div class="icon-circle">📞</div>
+            <div>
+                <p class="label">Hotline</p>
+                <p class="value">123-456-7890</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-circle">🩺</div>
+            <div>
+                <p class="label">Emergency</p>
+                <p class="value">876-256-876</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-circle">📍</div>
+            <div>
+                <p class="label">Location</p>
+                <p class="value">1/325 Pitt Street, Sydney</p>
+            </div>
+        </div>
+
+        <button class="book-btn">Book Now →</button>
+    </section>
+
+
+
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-header">
+                    <div class="value-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/e8498cee1e9b520b93737efc2ec85025e9fd6202?placeholderIfAbsent=true"
+                            alt="" width="27" height="26">
+                    </div>
+                    <h3>Individuals</h3>
+                </div>
+                <p>Harmonie Health's technology supports independence and well-being, helping you live vibrantly on your
+                    own terms.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-header">
+                    <div class="value-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/b243f898fd044ec5341e42aca29b3a3903ec443b?placeholderIfAbsent=true"
+                            alt="" width="27" height="26">
+                    </div>
+                    <h3>Family</h3>
+                </div>
+                <p>Stay connected and engaged with tools that enhance communication and make supporting your loved one
+                    easier.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-header">
+                    <div class="value-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/089c1ecdc3e0ca9931152ea4ee3a924422c50fe0?placeholderIfAbsent=true"
+                            alt="" width="27" height="26">
+                    </div>
+                    <h3>Care Team</h3>
+                </div>
+                <p>Seamless collaboration across multidisciplinary teams, families and individuals to inform care
+                    decisions, promote efficiencies and get better patient outcomes.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-header">
+                    <div class="value-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/2c7f6d4c50d9543c96eca19de645a2fcdecf967e?placeholderIfAbsent=true"
+                            alt="" width="27" height="26">
+                    </div>
+                    <h3>Respect</h3>
+                </div>
+                <p>We treat all individuals with respect and dignity, regardless of their background, beliefs, or
+                    circumstances. We believe that every person deserves to be treated with compassion and kindness.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-header">
+                    <div class="value-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/2e43dfde00381ec42b51133076c1f32244f1f8ab?placeholderIfAbsent=true"
+                            alt="" width="27" height="26">
+                    </div>
+                    <h3>Teamwork</h3>
+                </div>
+                <p>We believe in working collaboratively with our team members and other healthcare professionals to
+                    provide comprehensive and effective care to our patients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-image">
+            <img src="./images/old_women_1.png" alt="Healthcare team collaboration">
+        </div>
+        <div class="about-text">
+            <h2 class="section-title about-us-title">About Us</h2>
+            <p>At Harmonie Health, we empower individuals, families, and care teams to manage health and well-being with
+                confidence and ease. Our innovative technology fosters independence, enhances communication and
+                streamlines care across every stage of the journey.</p>
+            <p>With solutions like the Harmonie Home Health Hub for holistic well-being, the Harmonie Family app for
+                seamless communication and collaborative caregiving, and our Care Provider Portal (CIS) for streamlined
+                multi-disciplinary care, we are dedicated to addressing the diverse needs of our users.</p>
+            <p>Join us in creating a world where technology helps everyone live vibrantly and independently.</p>
+        </div>
+    </section>
+
+    <!-- Facilities section -->
+
+    <section class="facilities-section">
+        <h2 class="facility-section-title">Our Facilities</h2>
+
+        <div class="facilities-grid">
+            <!-- Facility Card 1: Residential Services -->
+            <div class="facility-card">
+                <div class="facility-icon-container">
+                    <!-- Placeholder for Residential Services (Need to substitute with actual image if available) -->
+                    <img src="/images/resident_service.png" alt="Residential Services Icon" class="facility-icon-img">
+                </div>
+                <p class="facility-name">Residential Services</p>
+            </div>
+
+            <!-- Facility Card 2: Carer Services -->
+            <div class="facility-card">
+                <div class="facility-icon-container">
+                    <img src="/images/career_service.png" alt="Carer Services Icon" class="facility-icon-img">
+                </div>
+                <p class="facility-name">Carer Services</p>
+            </div>
+
+            <!-- Facility Card 3: Doctors Availability -->
+            <div class="facility-card">
+                <div class="facility-icon-container">
+                    <img src="/images/doctor_icon.png" alt="Doctors Availability Icon" class="facility-icon-img">
+                </div>
+                <p class="facility-name">Doctors Availability</p>
+            </div>
+
+            <!-- Facility Card 4: Transport Services -->
+            <div class="facility-card">
+                <div class="facility-icon-container">
+                    <!-- Placeholder for Transport Services (Need to substitute with actual image if available) -->
+                    <img src="/images/transport_service.png" alt="Transport Services Icon" class="facility-icon-img">
+                </div>
+                <p class="facility-name">Transport Services</p>
+            </div>
+
+            <!-- Facility Card 5: Harmonie Careers -->
+            <div class="facility-card">
+                <div class="facility-icon-container">
+                    <img src="/images/harmonie_careers.png" alt="Harmonie Careers Icon" class="facility-icon-img">
+                </div>
+                <p class="facility-name">Harmonie Careers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section">
+        <h2>ACHIEVEMENTS</h2>
+        <div class="achievements-grid">
+            <article class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/39647ca0c83fe4f6cf938cbb83ab2ebd18abf08e?placeholderIfAbsent=true"
+                            alt="" width="50" height="60">
+                    </div>
+                    <h3>Malcolm Baldrige National Quality Award</h3>
+                </div>
+                <p>This award recognizes healthcare organizations that have demonstrated excellence in leadership,
+                    strategic planning, customer and employee satisfaction, and operational efficiency.</p>
+            </article>
+            <article class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/b51b1bcdbec39fcf7983aa06993995260a2267d8?placeholderIfAbsent=true"
+                            alt="" width="50" height="60">
+                    </div>
+                    <h3>HIMSS Davies Award</h3>
+                </div>
+                <p>This award recognizes healthcare organizations that have used health information technology to
+                    improve patient outcomes and reduce costs.</p>
+            </article>
+            <article class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/8f2c8112bdc9eaf5b1b852ea5199172fed8c02e0?placeholderIfAbsent=true"
+                            alt="" width="50" height="60">
+                    </div>
+                    <h3>Healthgrades National's Best Hospital</h3>
+                </div>
+                <p>This recognition is given to hospitals that have achieved high ratings for clinical quality and
+                    patient safety across multiple specialties and procedures.</p>
+            </article>
+            <article class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <img src="https://api.builder.io/api/v1/image/assets/TEMP/bf1dc671eca499a7d01e36e9c30b432d6bd9610e?placeholderIfAbsent=true"
+                            alt="" width="50" height="60">
+                    </div>
+                    <h3>Joint Commission Gold Seal of Approval</h3>
+                </div>
+                <p>This recognition is given to hospitals that have met rigorous standards for patient safety and
+                    quality of care.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- client feedback -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h2>Some Reviews</h2>
+            <p>WHAT OUR CLIENT SAYS..!!</p>
+        </div>
+
+        <div class="reviews-container">
+            <!-- Left Side - Names -->
+            <div class="reviewers">
+                <div class="reviewer">
+                    <img src="/images/avatar_1.png.png" alt="Reviewer Photo">
+                    <div>
+                        <h3>RITA WUNDERSITZ</h3>
+                        <span>Canberra</span>
+                    </div>
+                </div>
+
+                <div class="reviewer reviewer-box">
+                    <img src="/images/avatar_2.png.png" alt="Reviewer Photo">
+                    <div>
+                        <h3>ASHISH KAMAT</h3>
+                        <span>Melbourne</span>
+                    </div>
+                </div>
+
+                <div class="reviewer">
+                    <img src="/images/avatar_3.png.png" alt="Reviewer Photo">
+                    <div>
+                        <h3>GAJENDRA YADAV</h3>
+                        <span>Sydney</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Timeline -->
+            <div class="timeline">
+                <span class="dot top"></span>
+                <span class="dot middle"></span>
+                <span class="dot bottom"></span>
+            </div>
+
+            <!-- Right Side Review Content -->
+            <div class="review-text">
+                <div class="quote-icon"><img src="/images/quote.svg fill.png" alt=""></div>
+
+                <p>
+                    I dealt with Dr Bede who is a Consultant Dermatologist who was excellent,
+                    patient and listened. The administration staff who arranged appointments
+                    and took my calls (Lisa Thomson) were also very patient, understanding and
+                    easy to deal with. Glad to say the result was that I do not have cancer.
+                </p>
+
+                <p>
+                    Thank yous kind and attentive. I recently had to bring my child to ProHealth
+                    for a minor injury, and I was so impressed with the care he received.
+                </p>
+
+                <div class="stars">★★★★★</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-container">
+
+        <div class="health-banner">
+            <div class="content-wrapper">
+                <h1 class="main-heading">Don't Let Your Health<br>Take a Backseat!</h1>
+                <p class="sub-text">
+                    Schedule an appointment with one of our <br>experienced medical professionals today!
+                </p>
+            </div>
+            <img src="/images/old_man.png"
+                alt="Happy old man with a large white beard, wearing a bright, colorful jacket." class="old-man-image">
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Appointment Form Section -->
+    <main class="appointment-container">
+        <div class="appointment-card">
+            <h2 class="appointment-form-header">
+                <p class="appointment-form-header-sub">Book An</p>
+                <p>Appointment</p>
+            </h2>
+
+            <form id="appointmentForm" class="appointment-form">
+
+                <!-- Row 1: Name and Phone -->
+                <div class="appointment-grid">
+                    <div class="appointment-input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="appointment-input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" required>
+                    </div>
+                </div>
+
+                <!-- Row 2: Email -->
+                <div class="appointment-input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <!-- Row 3: Date and Time -->
+                <div class="appointment-grid">
+                    <div class="appointment-input-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" name="date" id="date" required>
+                    </div>
+                    <div class="appointment-input-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" name="time" id="time" required>
+                    </div>
+                </div>
+
+                <!-- Row 4: Reason for Booking (Radio Buttons) -->
+                <div>
+                    <label class="appointment-input-group">Reason for the Booking</label>
+                    <div class="appointment-radio-group">
+                        <label>
+                            <input type="radio" name="reason" value="Routine Checkup" checked>
+                            <span>Routine Checkup</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="reason" value="New Patient Visit">
+                            <span>New Patient Visit</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="reason" value="Specific Concern">
+                            <span>Specific Concern</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Row 5: Department (Radio Buttons) -->
+                <div>
+                    <label class="appointment-input-group">Department</label>
+                    <div class="appointment-radio-group">
+                        <label>
+                            <input type="radio" name="department" value="Pediatric" checked>
+                            <span>Pediatric</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="OBGYN">
+                            <span>Obstetrics and Gynecology</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="Cardiology">
+                            <span>Cardiology</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="Neurology">
+                            <span>Neurology</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submission Button -->
+                <div>
+                    <button type="submit" class="appointment-submit-btn">
+                        Submit
+                    </button>
+                </div>
+
+                <!-- Status Message Area -->
+                <p id="appointmentStatusMessage"></p>
+
+            </form>
+
+        </div>
+        <div class="image-section">
+            <img src="/images/appointment.png" alt="Doctor Image">
+        </div>
+    </main>
+
+    <section class="faq-section">
+        <div class="faq-header">
+            <p class="faq-subheading">WHAT PEOPLE</p>
+            <h2 class="faq-heading">Usually Asked</h2>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <input type="checkbox" id="q1" class="faq-toggle">
+                <label for="q1" class="faq-question">
+                    How does Harmonie Health protect my personal and health information?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Harmonie Health utilizes robust encryption, strict access controls, and complies with all
+                        relevant health data privacy regulations (like HIPAA/GDPR) to ensure your information is secure
+                        and accessible only by authorized personnel.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q2" class="faq-toggle">
+                <label for="q2" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Access is strictly limited to you, your explicitly authorized family members, and members of your
+                        approved care team. You control sharing settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item is-expanded">
+                <input type="checkbox" id="q3" class="faq-toggle" checked>
+                <label for="q3" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+
+                </label>
+                <div class="faq-answer">
+                    <p>Harmonie Health takes a person centric approach to health data. This means the ability to
+                        settings of customisation is the shared and with whom.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q4" class="faq-toggle">
+                <label for="q4" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Access is strictly limited to you, your explicitly authorized family members, and members of your
+                        approved care team. You control sharing settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q5" class="faq-toggle">
+                <label for="q5" class="faq-question">
+                    How do I request a prescription refill?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>You can request refills directly through the Harmonie Family App or the Care Provider Portal
+                        under the 'Medication' section. Your care team will be notified immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-gallery-section">
+        <div class="logo-grid">
+
+            <div class="logo-card">
+                <img src="./images/medical_logo.png" alt="Stethoscope Medical Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/drug_store.png" alt="Heart DrugStore Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/div.cs_brand.png" alt="Medical Stethoscope Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_6.png.png" alt="Cross H Hospital Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_7.png.png" alt="Pharmacy Cross Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_8.png" alt="Medical Solutions People Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/div.cs_brand.png" alt="Circle Cross Pharmacy Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/drug_store.png" alt="Healthcare Stethoscope Logo" class="medical-logo-img">
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Departments</a>
+                    <a href="#">Doctors</a>
+                    <a href="#">Timetable</a>
+                    <a href="#">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="#">Blog</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
