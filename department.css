@@ -284,6 +284,103 @@
   margin: 0;
 }
 
+/* Treatments Section */
+.treatments-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 60px;
+  background: #FFFFFF;
+}
+
+.treatments-container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.treatments-header {
+  margin-bottom: 50px;
+}
+
+.treatments-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #999999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.treatments-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #274760;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  background: linear-gradient(135deg, #F24570 0%, #9B59B6 50%, #3498DB 100%);
+  border-radius: 20px;
+  padding: 60px 40px;
+}
+
+.treatment-card {
+  position: relative;
+  background: transparent;
+  padding: 0 20px;
+  color: #FFFFFF;
+  z-index: 2;
+}
+
+.treatment-icon-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+  z-index: 3;
+}
+
+.treatment-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  margin: 0 auto;
+}
+
+.treatment-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.treatment-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.treatment-card-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .department-hero-content {
@@ -339,6 +436,28 @@
   .available-doctor-card {
     width: 95%;
     padding: 20px;
+  }
+
+  .treatments-section {
+    padding: 60px 30px;
+  }
+
+  .treatments-title {
+    font-size: 36px;
+  }
+
+  .treatments-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px 30px;
+  }
+
+  .treatments-grid::before {
+    display: none;
+  }
+
+  .treatment-card {
+    padding: 0;
   }
 }
 
