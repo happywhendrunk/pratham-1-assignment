@@ -461,3 +461,238 @@
   }
 }
 
+/* Related Doctor Section */
+.related-doctor-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 60px;
+  background: #FFFFFF;
+}
+
+.related-doctor-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.related-doctor-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+/* Left Column: Doctor Image */
+.related-doctor-left {
+  flex: 1;
+}
+
+.related-doctor-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Right Column: Title, Card, Social, Actions */
+.related-doctor-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.related-doctor-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #F24570;
+  margin: 0 0 30px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  padding-left: 40px;
+}
+
+.related-doctor-title span {
+  display: block;
+}
+
+.related-doctor-card {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0;
+  margin-top: 50px;
+  margin-left: -160px;
+  position: relative;
+  z-index: 10;
+}
+
+.related-doctor-info {
+    padding: 40px;
+}
+
+.related-doctor-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #274760;
+  margin: 0 0 8px 0;
+}
+
+.related-doctor-specialty {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0 0 20px 0;
+}
+
+.related-doctor-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+.related-doctor-social {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.social-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #F24570;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.social-icon-circle:hover {
+  background: #E03D5F;
+}
+
+.social-icon-circle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Action Buttons Bar */
+.related-doctor-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F24570;
+  border-radius: 0 0 20px 20px;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.related-doctor-actions > div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.related-doctor-actions > div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.booking-btn {
+  font-weight: 600;
+  padding: 16px 24px;
+}
+
+/* Navigation */
+.related-doctor-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E8E8E8;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: #307BC4;
+}
+
+.navigation-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-arrow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #E8E8E8;
+  background: #FFFFFF;
+  color: #307BC4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow-btn:hover {
+  border-color: #307BC4;
+  background: #307BC4;
+  color: #FFFFFF;
+}
+
+.nav-arrow-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
