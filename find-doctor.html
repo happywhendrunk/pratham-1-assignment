@@ -51,7 +51,281 @@
     </section>
 
     <!--Doctors section-->
-    <section class="doctors">
+    <section class="doctors-section">
+        <div class="doctors-container">
+            <!-- Header with filters and view options -->
+            <div class="doctors-header">
+                <div class="sort-by-filters">
+                    <span class="sort-by-label">Sort By</span>
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Cardiology</button>
+                    <button class="filter-btn">Emergency</button>
+                    <button class="filter-btn">Pediatrics</button>
+                    <button class="filter-btn">Psychiatry</button>
+                </div>
+                <div class="view-options">
+                    <span class="showing-items">Showing 12 items</span>
+                    <button class="view-btn active" aria-label="Grid view">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="12" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="2" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="12" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </button>
+                    <button class="view-btn" aria-label="List view">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="3" width="16" height="2" rx="1" fill="currentColor"/>
+                            <rect x="2" y="9" width="16" height="2" rx="1" fill="currentColor"/>
+                            <rect x="2" y="15" width="16" height="2" rx="1" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doctor Cards Grid -->
+            <div class="doctors-grid">
+                <!-- Doctor Card 1: Dr. Dwarika Prasad Shrestha -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Dr. Dwarika Prasad Shrestha" class="doctor-image">
+                        <div class="doctor-department-tag">Emergency Department</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Dwarika Prasad Shrestha</h3>
+                        <p class="doctor-specialty">Dermatologist & Venereologist</p>
+                        <p class="doctor-description">Dr. Dwarika has over 40 years of experience in dermatologis medicine and is board certified in emergency medicine. She has a special interest in critical care and trauma management.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 2: Dr. Parash Shrestha -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Dr. Parash Shrestha" class="doctor-image">
+                        <div class="doctor-department-tag">Emergency Department</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Parash Shrestha, MD</h3>
+                        <p class="doctor-specialty">Consultant Dermatologist & Venereologist</p>
+                        <p class="doctor-description">Dr. Paras is a highly experienced deramatologist and physician with over 15 years of experience. He is board-certified in emergency medicine and has a special interest in disaster management.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 3: Dr. Gajendra Yadav -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Dr. Gajendra Yadav" class="doctor-image">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Gajendra Yadav</h3>
+                        <p class="doctor-specialty">CONSULTANT ORTHOPEDIC</p>
+                        <p class="doctor-description">He has special interest and deals with Adult & Pediatric Hip, Pelvis & Acetabulum Cases, Hip & Knee Replacement Surgeries. He has been associated with B&B Hospital and HRDC since 2011 AD.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 4 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Cardiology</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Anjana Karki</h3>
+                        <p class="doctor-specialty">Cardiologist</p>
+                        <p class="doctor-description">Dr. Karki is a renowned cardiologist with over 10 years of experience. She is board-certified in cardiology and has a special interest in interventional cardiology.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 5 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Pediatrics</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Namrata Pradhan</h3>
+                        <p class="doctor-specialty">Pediatrician</p>
+                        <p class="doctor-description">Dr. Pradhan is a board-certified pediatrician with extensive experience in managing complex pediatric conditions. She has a special interest in child development.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 6 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Psychiatry</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Rajesh Kumar</h3>
+                        <p class="doctor-specialty">Psychiatrist</p>
+                        <p class="doctor-description">Dr. Kumar is a highly experienced psychiatrist with over 20 years of experience. He specializes in mental health disorders and has a special interest in anxiety management.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 7 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Emergency Department</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Sunita Sharma</h3>
+                        <p class="doctor-specialty">Emergency Medicine</p>
+                        <p class="doctor-description">Dr. Sharma is a board-certified emergency medicine physician with over 15 years of experience. She has a special interest in trauma care and critical care management.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 8 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Cardiology</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Amit Patel</h3>
+                        <p class="doctor-specialty">Cardiologist</p>
+                        <p class="doctor-description">Dr. Patel is a renowned cardiologist with extensive experience in managing complex cardiac conditions. He is board-certified and has a special interest in preventive cardiology.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 9 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Priya Singh</h3>
+                        <p class="doctor-specialty">Gynecologist</p>
+                        <p class="doctor-description">Dr. Singh is a board-certified gynecologist with over 12 years of experience. She specializes in women's health and has a special interest in reproductive health.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 10 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Pediatrics</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Vikram Mehta</h3>
+                        <p class="doctor-specialty">Pediatric Surgeon</p>
+                        <p class="doctor-description">Dr. Mehta is a highly experienced pediatric surgeon with over 18 years of experience. He specializes in pediatric surgical procedures and has a special interest in minimally invasive surgery.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 11 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                        <div class="doctor-department-tag">Emergency Department</div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Ramesh Thapa</h3>
+                        <p class="doctor-specialty">Emergency Medicine</p>
+                        <p class="doctor-description">Dr. Thapa is a board-certified emergency medicine physician with extensive experience in emergency care. He has a special interest in disaster management and trauma care.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 12 -->
+                <div class="doctor-card">
+                    <div class="doctor-image-wrapper">
+                        <img src="./images/doctor.png" alt="Doctor" class="doctor-image">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Meera Joshi</h3>
+                        <p class="doctor-specialty">Neurologist</p>
+                        <p class="doctor-description">Dr. Joshi is a renowned neurologist with over 14 years of experience. She is board-certified in neurology and has a special interest in stroke management and neurological disorders.</p>
+                        <button class="book-now-btn">
+                            Book Now
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <svg class="pagination-arrow-left" width="16" height="10.97" viewBox="0 0 16 10.97" fill="none">
+                    <path d="M6 0L0 5.5L6 11V8.5L16 8.5V2.5L6 2.5V0Z" fill="#F24570"/>
+                </svg>
+                <button class="pagination-button active">1</button>
+                <button class="pagination-button">2</button>
+                <button class="pagination-button">3</button>
+                <button class="pagination-button">...</button>
+                <button class="pagination-button">8</button>
+                <svg class="pagination-arrow-right" width="16" height="10.97" viewBox="0 0 16 10.97" fill="none">
+                    <path d="M10 0L16 5.5L10 11V8.5L0 8.5V2.5L10 2.5V0Z" fill="#F24570"/>
+                </svg>
+            </div>
+        </div>
     </section>
 
     <!-- Footer Hero Section -->
