@@ -562,3 +562,151 @@
   top: 105.04px;
 }
 
+/* Stats Section */
+.stats-section {
+  position: relative;
+  width: 1296px;
+  height: 333.83px;
+  left: calc(50% - 1296px / 2);
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.stats-container {
+  position: relative;
+  width: 1296px;
+  height: 333.83px;
+  background: url('./images/stats-bg.svg');
+  border-radius: 30px;
+}
+
+.stat-item {
+  position: absolute;
+  top: 80px;
+  bottom: 90px;
+}
+
+.stat-item:nth-child(1) {
+  width: 216.47px;
+  left: calc(50% - 216.47px / 2 - 478.38px);
+}
+
+.stat-item:nth-child(2) {
+  width: 239.19px;
+  left: calc(50% - 239.19px / 2 - 250.54px);
+}
+
+.stat-item:nth-child(3) {
+  width: 239.19px;
+  left: calc(50% - 239.19px / 2 - 11.36px);
+}
+
+.stat-item:nth-child(4) {
+  width: 239.19px;
+  left: calc(50% - 239.19px / 2 + 227.83px);
+}
+
+.stat-item:nth-child(5) {
+  width: 239.19px;
+  left: calc(50% - 239.19px / 2 + 467.01px);
+}
+
+.stat-number {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #F24570;
+  margin: 0;
+  top: 18px;
+  left: calc(50% - var(--stat-number-width) / 2);
+}
+
+.stat-item:nth-child(1) .stat-number {
+  width: 104.31px;
+  height: 67px;
+  font-size: 52.1719px;
+  left: calc(50% - 104.31px / 2 + 0.09px);
+}
+
+.stat-item:nth-child(2) .stat-number {
+  width: 110.75px;
+  height: 67px;
+  font-size: 51.0781px;
+  left: calc(50% - 110.75px / 2 + 0.09px);
+}
+
+.stat-item:nth-child(3) .stat-number {
+  width: 177px;
+  height: 67px;
+  font-size: 52.1719px;
+  left: calc(50% - 177px / 2 + 0.08px);
+}
+
+.stat-item:nth-child(4) .stat-number {
+  width: 95.51px;
+  height: 67px;
+  font-size: 51.4062px;
+  left: calc(50% - 95.51px / 2 + 0.1px);
+}
+
+.stat-item:nth-child(5) .stat-number {
+  width: 100.45px;
+  height: 67px;
+  font-size: 51.7344px;
+  left: calc(50% - 100.45px / 2 + 0.1px);
+}
+
+.stat-label {
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #F24570;
+  margin: 0;
+  top: 91.83px;
+}
+
+.stat-item:nth-child(1) .stat-label {
+  width: 156.79px;
+  height: 26px;
+  left: calc(50% - 156.79px / 2 + 0.16px);
+}
+
+.stat-item:nth-child(2) .stat-label {
+  width: 153.63px;
+  height: 49px;
+  left: calc(50% - 153.63px / 2 + 0.09px);
+  top: 92.83px;
+}
+
+.stat-item:nth-child(3) .stat-label {
+  width: 122.6px;
+  height: 49px;
+  left: calc(50% - 122.6px / 2 + 0.09px);
+  top: 92.83px;
+}
+
+.stat-item:nth-child(4) .stat-label {
+  width: 167.7px;
+  height: 49px;
+  left: calc(50% - 167.7px / 2 + 0.1px);
+  top: 92.83px;
+}
+
+.stat-item:nth-child(5) .stat-label {
+  width: 169.67px;
+  height: 49px;
+  left: calc(50% - 169.67px / 2 + 0.1px);
+  top: 92.83px;
+}
+
