@@ -154,6 +154,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Available Doctor Card */
@@ -694,5 +695,541 @@
 .nav-arrow-btn svg {
   width: 16px;
   height: 16px;
+}
+
+/* Appointment Section */
+.appointment-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 60px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.appointment-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Left Section: Form */
+.appointment-form-wrapper {
+  position: relative;
+  height: 900px;
+  left: 72px;
+  right: 708px;
+  flex: 1;
+  max-width: 660px;
+  overflow: visible;
+}
+
+.appointment-title {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.title-part-1 {
+  position: absolute;
+  width: 118.14px;
+  height: 32px;
+  left: 12px;
+  top: 39px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25.6953px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #014C1F;
+}
+
+.title-part-2 {
+  position: absolute;
+  width: 343.2px;
+  height: 67px;
+  left: 12px;
+  top: 75.05px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 53.2656px;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.appointment-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 174.88px;
+  bottom: 0;
+}
+
+.form-group {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* Name Field */
+.form-group:nth-child(1) {
+  left: 0;
+  right: 330px;
+  top: 0;
+  bottom: 502px;
+}
+
+.form-group:nth-child(1) .form-label {
+  position: absolute;
+  width: 48.82px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(1) .form-input {
+  position: absolute;
+  height: 60px;
+  left: 12px;
+  right: 12px;
+  top: 36px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  padding: 17px 21px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+/* Phone Number Field */
+.form-group:nth-child(2) {
+  left: 330px;
+  right: 0;
+  top: 0;
+  bottom: 502px;
+}
+
+.form-group:nth-child(2) .form-label {
+  position: absolute;
+  width: 119.24px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(2) .form-input {
+  position: absolute;
+  height: 60px;
+  left: 12px;
+  right: 12px;
+  top: 36px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  padding: 17px 21px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+/* Medical Record Number Field */
+.form-group:nth-child(3) {
+  left: 0;
+  right: 0;
+  top: 121px;
+  bottom: 381px;
+}
+
+.form-group:nth-child(3) .form-label {
+  position: absolute;
+  width: 192.87px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(3) .form-input {
+  position: absolute;
+  height: 60px;
+  left: 12px;
+  right: 12px;
+  top: 36px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  padding: 17px 21px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+/* Preferred Date Field */
+.form-group:nth-child(4) {
+  left: 0;
+  right: 330px;
+  top: 242px;
+  bottom: 260px;
+}
+
+.form-group:nth-child(4) .form-label {
+  position: absolute;
+  width: 115.54px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(4) .form-input {
+  position: absolute;
+  height: 60px;
+  left: 12px;
+  right: 12px;
+  top: 36px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  padding: 17px 51px 17px 21px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+.form-group:nth-child(4) .input-icon {
+  position: absolute;
+  width: 17.59px;
+  left: 32px;
+  top: 56px;
+  bottom: 45px;
+  background: #014C1F;
+}
+
+/* Preferred Time Field */
+.form-group:nth-child(5) {
+  left: 330px;
+  right: 0;
+  top: 242px;
+  bottom: 260px;
+}
+
+.form-group:nth-child(5) .form-label {
+  position: absolute;
+  width: 116.66px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(5) .form-input {
+  position: absolute;
+  height: 60px;
+  left: 12px;
+  right: 12px;
+  top: 36px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  padding: 17px 21px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+
+.form-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #F64D09;
+}
+
+.form-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  padding: 17px 21px;
+  border: 1px solid rgba(48, 123, 196, 0.5);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  background: #FFFFFF;
+  color: rgba(39, 71, 96, 0.52);
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgba(48, 123, 196, 0.8);
+}
+
+.form-input::placeholder {
+  color: rgba(39, 71, 96, 0.52);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .form-input {
+  padding-right: 50px;
+}
+
+.input-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #014C1F;
+  pointer-events: none;
+}
+
+
+/* Reason for Visit Radio Buttons */
+.form-group:nth-child(6) {
+  left: 0;
+  right: 0;
+  top: 363px;
+  bottom: 173px;
+}
+
+.form-group:nth-child(6) .form-label {
+  position: absolute;
+  width: 122.58px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.radio-group {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 36px;
+}
+
+.radio-label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-label:nth-child(1) {
+  left: 12px;
+  top: 0;
+}
+
+.radio-label:nth-child(2) {
+  left: 209.92px;
+  top: 0;
+}
+
+.radio-label:nth-child(3) {
+  left: 403.45px;
+  top: 0;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-custom {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #014C1F;
+  border-radius: 10px;
+  position: relative;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.radio-input:checked + .radio-custom {
+  background: #014C1F;
+}
+
+.radio-input:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.radio-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: rgba(39, 71, 96, 0.52);
+}
+
+/* Department Radio Buttons */
+.form-group:nth-child(7) {
+  left: 0;
+  right: 0;
+  top: 450px;
+  bottom: 0;
+}
+
+.form-group:nth-child(7) .form-label {
+  position: absolute;
+  width: 97.48px;
+  height: 26px;
+  left: 12px;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #F64D09;
+}
+
+.form-group:nth-child(7) .radio-label:nth-child(1) {
+  left: 12px;
+  top: 36px;
+}
+
+.form-group:nth-child(7) .radio-label:nth-child(2) {
+  left: 144.2px;
+  top: 36px;
+}
+
+.form-group:nth-child(7) .radio-label:nth-child(3) {
+  left: 423.47px;
+  top: 36px;
+}
+
+.form-group:nth-child(7) .radio-label:nth-child(4) {
+  left: 12px;
+  top: 75px;
+}
+
+/* Submit Button */
+.submit-btn {
+  position: absolute;
+  width: 154.89px;
+  height: 50px;
+  left: 12px;
+  top: 650px;
+  background: linear-gradient(107.31deg, #F24570 0%, #274760 100%);
+  box-shadow: 0px 4px 20px rgba(39, 71, 96, 0.17);
+  border-radius: 24px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15.375px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 25px rgba(39, 71, 96, 0.25);
+}
+
+.submit-btn svg {
+  width: 15px;
+  height: 11px;
+}
+
+/* Right Section: Image */
+.appointment-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.appointment-image {
+  width: 526px;
+  height: 655.08px;
+  object-fit: cover;
+  border-radius: 400px;
 }
 

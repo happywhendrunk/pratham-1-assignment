@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Details</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="department.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -278,10 +279,200 @@
         </div>
     </section>
 
-    <!-- appointment section-->
-    <section class="appointment">
-        
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+        <div class="appointment-container">
+            <!-- Left Section: Appointment Form -->
+            <div class="appointment-form-wrapper">
+                <h2 class="appointment-title">
+                    <span class="title-part-1">BOOK AN</span>
+                    <span class="title-part-2">Appointment</span>
+                </h2>
+
+                <form class="appointment-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="David John">
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(123) 456 - 789">
+                    </div>
+
+                    <!-- Medical Record Number Field -->
+                    <div class="form-group">
+                        <label for="medical-record" class="form-label">Medical Record Number</label>
+                        <input type="text" id="medical-record" name="medical-record" class="form-input" placeholder="123456-7890-0987">
+                    </div>
+
+                    <!-- Preferred Date Field -->
+                    <div class="form-group">
+                        <label for="preferred-date" class="form-label">Preferred Date</label>
+                        <input type="date" id="preferred-date" name="preferred-date" class="form-input" placeholder="dd/mm/yyyy">
+                    </div>
+
+                    <!-- Preferred Time Field -->
+                    <div class="form-group">
+                        <label for="preferred-time" class="form-label">Preferred Time</label>
+                        <input type="time" id="preferred-time" name="preferred-time" class="form-input" placeholder="— — — —">
+                    </div>
+
+                    <!-- Reason for Visit Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Reason for Visit</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="routine" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Routine Checkup</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="new-patient" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">New Patient Visit</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="specific" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Specific Concern</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Department Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Department</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="pediatric" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pediatric</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="obgyn" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Obstetrics and Gynecology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="cardiology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Cardiology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="neurology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Neurology</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <span>Submit</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Section: Medical Professionals Image -->
+            <div class="appointment-image-wrapper">
+                <img src="./images/appointment.png" alt="Medical professionals" class="appointment-image">
+            </div>
+        </div>
     </section>
+
+    <!-- Footer Hero Section -->
+    <section class="footer-hero-section">
+        <div class="footer-hero-background">
+            <img src="./images/about-footer.jpg" alt="Medical professionals" class="footer-hero-image">
+        </div>
+        <div class="footer-hero-overlay"></div>
+        <div class="footer-hero-content">
+            <h2 class="footer-hero-title">Don't Let Your Health Take a Backseat!</h2>
+            <p class="footer-hero-subtitle">Schedule an appointment with one of our experienced medical professionals today!</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="./images/about-shield.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Departments</a>
+                    <a href="#">Doctors</a>
+                    <a href="#">Timetable</a>
+                    <a href="#">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="#">Blog</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
