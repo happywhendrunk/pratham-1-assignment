@@ -1,0 +1,86 @@
+/* About Page Hero Section Styles */
+
+.hero {
+  display: flex;
+  background: url('./images/about-hero.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 60px 60px 0 60px;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.hero-left {
+  width: 48%;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  line-height: 0;
+}
+
+.hero-left .hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-right {
+  width: 48%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding-left: 20px;
+  padding-bottom: 60px;
+}
+
+.hero-right h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.hero-right .welcome-text {
+  color: #E92B5BBA;
+  font-size: 52.94px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hero-right .brand-name {
+  color: #1D1215BA;
+  font-size: 56px;
+  font-weight: 700;
+  display: block;
+}
+
+.hero-right .hero-subtext {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #E92B5BBA;
+  font-weight: 400;
+  max-width: 100%;
+  font-family: Poppins;
+}
+

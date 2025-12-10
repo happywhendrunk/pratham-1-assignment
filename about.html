@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="about.html">About</a>
+                <a href="#">Find Carer</a>
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Pages ▾</a>
+                </div>
+                <a href="#">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <img src="./images/about-hero.png" alt="Happy elderly woman" class="hero-image">
+        </div>
+
+        <div class="hero-right">
+            <h1>
+                <span class="welcome-text">Welcome to</span>
+                <span class="brand-name">Harmonie Health</span>
+            </h1>
+
+            <p class="hero-subtext">
+                Your Partner in Health and Wellness
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+    </section>
+
+
+
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+    </section>
+
+    <!-- meet our experts section -->
+    <section class="meet-our-experts-section">
+    </section>
+
+    <!-- Our Facilities and Latest Activities Section -->
+    <section class="our-facilities-and-latest-activities-section">
+    </section>
+
+    <!-- awards section-->
+    <section class="reviews-section">
+    </section>
+
+    <section class="banner-container">
+
+        <div class="health-banner">
+            <div class="content-wrapper">
+                <h1 class="main-heading">Don't Let Your Health<br>Take a Backseat!</h1>
+                <p class="sub-text">
+                    Schedule an appointment with one of our <br>experienced medical professionals today!
+                </p>
+            </div>
+            <img src="/images/old_man.png"
+                alt="Happy old man with a large white beard, wearing a bright, colorful jacket." class="old-man-image">
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Appointment Form Section -->
+    <main class="appointment-container">
+        <div class="appointment-card">
+            <h2 class="appointment-form-header">
+                <p class="appointment-form-header-sub">Book An</p>
+                <p>Appointment</p>
+            </h2>
+
+            <form id="appointmentForm" class="appointment-form">
+
+                <!-- Row 1: Name and Phone -->
+                <div class="appointment-grid">
+                    <div class="appointment-input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="appointment-input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" required>
+                    </div>
+                </div>
+
+                <!-- Row 2: Email -->
+                <div class="appointment-input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <!-- Row 3: Date and Time -->
+                <div class="appointment-grid">
+                    <div class="appointment-input-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" name="date" id="date" required>
+                    </div>
+                    <div class="appointment-input-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" name="time" id="time" required>
+                    </div>
+                </div>
+
+                <!-- Row 4: Reason for Booking (Radio Buttons) -->
+                <div>
+                    <label class="appointment-input-group">Reason for the Booking</label>
+                    <div class="appointment-radio-group">
+                        <label>
+                            <input type="radio" name="reason" value="Routine Checkup" checked>
+                            <span>Routine Checkup</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="reason" value="New Patient Visit">
+                            <span>New Patient Visit</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="reason" value="Specific Concern">
+                            <span>Specific Concern</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Row 5: Department (Radio Buttons) -->
+                <div>
+                    <label class="appointment-input-group">Department</label>
+                    <div class="appointment-radio-group">
+                        <label>
+                            <input type="radio" name="department" value="Pediatric" checked>
+                            <span>Pediatric</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="OBGYN">
+                            <span>Obstetrics and Gynecology</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="Cardiology">
+                            <span>Cardiology</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="department" value="Neurology">
+                            <span>Neurology</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submission Button -->
+                <div>
+                    <button type="submit" class="appointment-submit-btn">
+                        Submit
+                    </button>
+                </div>
+
+                <!-- Status Message Area -->
+                <p id="appointmentStatusMessage"></p>
+
+            </form>
+
+        </div>
+        <div class="image-section">
+            <img src="/images/appointment.png" alt="Doctor Image">
+        </div>
+    </main>
+
+    <section class="faq-section">
+        <div class="faq-header">
+            <p class="faq-subheading">WHAT PEOPLE</p>
+            <h2 class="faq-heading">Usually Asked</h2>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <input type="checkbox" id="q1" class="faq-toggle">
+                <label for="q1" class="faq-question">
+                    How does Harmonie Health protect my personal and health information?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Harmonie Health utilizes robust encryption, strict access controls, and complies with all
+                        relevant health data privacy regulations (like HIPAA/GDPR) to ensure your information is secure
+                        and accessible only by authorized personnel.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q2" class="faq-toggle">
+                <label for="q2" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Access is strictly limited to you, your explicitly authorized family members, and members of your
+                        approved care team. You control sharing settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item is-expanded">
+                <input type="checkbox" id="q3" class="faq-toggle" checked>
+                <label for="q3" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+
+                </label>
+                <div class="faq-answer">
+                    <p>Harmonie Health takes a person centric approach to health data. This means the ability to
+                        settings of customisation is the shared and with whom.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q4" class="faq-toggle">
+                <label for="q4" class="faq-question">
+                    Who can access the information I share on the platforms?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>Access is strictly limited to you, your explicitly authorized family members, and members of your
+                        approved care team. You control sharing settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <input type="checkbox" id="q5" class="faq-toggle">
+                <label for="q5" class="faq-question">
+                    How do I request a prescription refill?
+                    <span class="faq-icon">↑</span>
+                </label>
+                <div class="faq-answer">
+                    <p>You can request refills directly through the Harmonie Family App or the Care Provider Portal
+                        under the 'Medication' section. Your care team will be notified immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-gallery-section">
+        <div class="logo-grid">
+
+            <div class="logo-card">
+                <img src="./images/medical_logo.png" alt="Stethoscope Medical Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/drug_store.png" alt="Heart DrugStore Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/div.cs_brand.png" alt="Medical Stethoscope Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_6.png.png" alt="Cross H Hospital Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_7.png.png" alt="Pharmacy Cross Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/brand_8.png" alt="Medical Solutions People Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/div.cs_brand.png" alt="Circle Cross Pharmacy Logo" class="medical-logo-img">
+            </div>
+
+            <div class="logo-card">
+                <img src="./images/drug_store.png" alt="Healthcare Stethoscope Logo" class="medical-logo-img">
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Departments</a>
+                    <a href="#">Doctors</a>
+                    <a href="#">Timetable</a>
+                    <a href="#">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="#">Blog</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
