@@ -1066,7 +1066,7 @@
   height: 455px;
   left: calc(50% - 1308px / 2);
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .awards-label {
@@ -1187,6 +1187,96 @@
 
 .award-card:nth-child(2) .award-name {
   width: 218px;
+}
+
+/* Footer Hero Section */
+.footer-hero-section {
+  position: relative;
+  width: calc(100% - 144px);
+  height: 679.66px;
+  margin: 0 72px;
+  margin-top: 20px;
+  margin-bottom: -180px;
+  overflow: hidden;
+  box-shadow: hidden;
+  box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  border-radius: 30px 30px 0px 0px;
+  z-index: 1;
+}
+
+.footer-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 30px 30px 0px 0px;
+  overflow: hidden;
+}
+
+.footer-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+  border-radius: 30px 30px 0px 0px;
+}
+
+.footer-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(39, 71, 96, 0.1);
+  z-index: 2;
+}
+
+.footer-hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.footer-hero-title {
+  width: auto;
+  max-width: 550.18px;
+  height: auto;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 53.2656px;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.footer-hero-subtitle {
+  width: auto;
+  max-width: 543.45px;
+  height: auto;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  margin: 0;
+  text-align: center;
 }
 
 
