@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Details</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="department.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="about.html">About</a>
+                <a href="#">Find Carer</a>
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Pages ▾</a>
+                </div>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="department-hero">
+        <div class="department-hero-container">
+            <div class="department-hero-header">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <span class="breadcrumb-item">Home</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item">departments</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item">department-details</span>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-bar-wrapper">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search Doctors" class="search-input">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="department-hero-content">
+                <!-- Left Section -->
+                <div class="department-left">
+                    <h1 class="department-title">Human Psychology</h1>
+                    <p class="department-description">
+                        This department specializes in the care of infants, children, adolescents, and provides a range of services including preventive care, developmental screenings, and treatment of childhood illnesses and conditions.
+                    </p>
+                </div>
+
+                <!-- Right Section -->
+                <div class="department-right">
+                    <div class="department-image-wrapper">
+                        <img src="./images/hero_img1.png" alt="Medical professionals" class="department-image">
+                        
+                        <!-- Floating Card -->
+                        <div class="available-doctor-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Available Doctor</h3>
+                                <button class="menu-icon" aria-label="Menu">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="select-doctor-text">Select Doctor</p>
+                            
+                            <div class="doctor-list">
+                                <!-- Doctor 1 -->
+                                <div class="doctor-item">
+                                    <div class="doctor-avatar-wrapper">
+                                        <div class="avatar-background"></div>
+                                        <img src="./images/doctor1.png" alt="Dr. Susan Bones" class="doctor-avatar">
+                                        <span class="availability-dot"></span>
+                                    </div>
+                                    <div class="doctor-details">
+                                        <h4 class="doctor-name-card">Dr. Susan Bones, MD</h4>
+                                        <p class="doctor-specialty-card">Pediatric Specialist</p>
+                                    </div>
+                                </div>
+
+                                <!-- Doctor 2 -->
+                                <div class="doctor-item">
+                                    <div class="doctor-avatar-wrapper">
+                                        <div class="avatar-background"></div>
+                                        <img src="./images/doctor.png" alt="Dr. David Angelo" class="doctor-avatar">
+                                        <span class="availability-dot"></span>
+                                    </div>
+                                    <div class="doctor-details">
+                                        <h4 class="doctor-name-card">Dr. David Angelo, MD</h4>
+                                        <p class="doctor-specialty-card">Pediatric Specialist</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatements section-->
+    <section class="treatements-section">
+    </section>
+
+    <!-- related doctor section-->
+
+</body>
+
+</html>
+

@@ -1,0 +1,344 @@
+/* Department Page Hero Section Styles */
+
+.department-hero {
+  position: relative;
+  width: 100%;
+  padding: 40px 60px 80px;
+  background: #FFFFFF;
+}
+
+.department-hero-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Header Section (Breadcrumbs + Search) */
+.department-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 30px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb-item {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(230, 25, 7, 0.52);
+  text-transform: capitalize;
+}
+
+.breadcrumb-separator {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(230, 25, 7, 0.52);
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+  position: relative;
+}
+
+.search-bar {
+  position: relative;
+  width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 45px 12px 20px;
+  border: 1px solid #307BC4;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(230, 25, 7, 0.52);
+  background: #FFFFFF;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #F24570;
+}
+
+.search-input::placeholder {
+  color: rgba(230, 25, 7, 0.52);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #274760;
+  pointer-events: none;
+}
+
+/* Main Content */
+.department-hero-content {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Left Section */
+.department-left {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.department-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #F24570;
+  margin: 0 0 30px 0;
+  line-height: 1.2;
+}
+
+.department-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 1.7;
+  margin: 0 0 60px 0;
+}
+
+.treatments-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
+
+/* Right Section */
+.department-right {
+  flex: 1;
+  position: relative;
+}
+
+.department-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: visible;
+  border-radius: 20px;
+}
+
+.department-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Available Doctor Card */
+.available-doctor-card {
+  position: absolute;
+  bottom: 0;
+  left: -165px;
+  transform: translateY(50%);
+  width: 85%;
+  max-width: 380px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  z-index: 10;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #274760;
+  margin: 0;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #274760;
+  transition: opacity 0.3s ease;
+}
+
+.menu-icon:hover {
+  opacity: 0.7;
+}
+
+.menu-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.select-doctor-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+  margin: 0 0 20px 0;
+}
+
+.doctor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.doctor-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.doctor-avatar-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.avatar-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D2EAEF 0%, #86BBF1 100%);
+  z-index: 0;
+}
+
+.doctor-avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.availability-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: #4CAF50;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.doctor-details {
+  flex: 1;
+}
+
+.doctor-name-card {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #274760;
+  margin: 0 0 4px 0;
+}
+
+.doctor-specialty-card {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .department-hero-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .department-left {
+    max-width: 100%;
+  }
+
+  .department-hero-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .search-bar-wrapper {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .department-hero {
+    padding: 30px 20px 60px;
+  }
+
+  .department-hero-header {
+    padding: 15px 20px;
+  }
+
+  .breadcrumb-item,
+  .breadcrumb-separator {
+    font-size: 16px;
+  }
+
+  .department-title {
+    font-size: 42px;
+  }
+
+  .department-description {
+    font-size: 16px;
+  }
+
+  .department-image-wrapper {
+    height: 400px;
+  }
+
+  .available-doctor-card {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
