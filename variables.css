@@ -1,0 +1,129 @@
+:root {
+  /* ============================================
+     COLORS
+     ============================================ */
+  /* Primary Colors */
+  --color-primary: #F24570;
+  --color-primary-dark: #E03D5F;
+  --color-primary-light: rgba(242, 69, 112, 0.1);
+  
+  /* Secondary Colors */
+  --color-secondary: #274760;
+  --color-secondary-light: rgba(39, 71, 96, 0.52);
+  --color-secondary-border: rgba(48, 123, 196, 0.5);
+  --color-secondary-border-focus: rgba(48, 123, 196, 0.8);
+  
+  /* Accent Colors */
+  --color-accent: #307BC4;
+  --color-accent-blue: #307BC4;
+  --color-accent-blue-light: rgba(48, 123, 196, 0.1);
+  --color-accent-green: #014C1F;
+  --color-accent-orange: #F64D09;
+  
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-dark: #274760;
+  --color-dark-text: rgba(39, 71, 96, 0.52);
+  --color-light-text: rgba(12, 12, 12, 0.52);
+  
+  /* Text Colors */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-dark: #000000;
+  --color-text-light: rgba(255, 255, 255, 0.9);
+  
+  /* Background Colors */
+  --color-bg: #FFFFFF;
+  --color-bg-light: #f5f5f5;
+  --color-bg-gradient-start: rgba(210, 234, 239, 0.27);
+  --color-bg-gradient-end: rgba(134, 187, 241, 0.27);
+  
+  /* Other Colors */
+  --color-overlay: rgba(39, 71, 96, 0.1);
+  --color-breadcrumb: rgba(230, 25, 7, 0.52);
+  --color-success: #4CAF50;
+  --color-border: #E8E8E8;
+  --color-shadow-light: rgba(48, 123, 196, 0.1);
+  --color-shadow-medium: rgba(48, 123, 196, 0.17);
+  --color-shadow-award: rgba(162, 205, 240, 0.6);
+  --color-button-gradient: rgba(255, 7, 193, 0.5);
+  
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  
+  /* ============================================
+     SPACING SCALE
+     ============================================ */
+  --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 1.5vw, 0.75rem);
+  --spacing-md: clamp(0.75rem, 2vw, 1rem);
+  --spacing-lg: clamp(1rem, 2.5vw, 1.5rem);
+  --spacing-xl: clamp(1.5rem, 3vw, 2rem);
+  --spacing-2xl: clamp(2rem, 4vw, 2.5rem);
+  --spacing-3xl: clamp(2.5rem, 5vw, 3rem);
+  --spacing-4xl: clamp(3rem, 6vw, 4rem);
+  --spacing-5xl: clamp(3.5rem, 7vw, 5rem);
+  --spacing-6xl: clamp(4rem, 8vw, 6rem);
+  --spacing-7xl: clamp(5rem, 10vw, 8rem);
+  --spacing-section: clamp(3rem, 6vw, 6.25rem);
+  
+  /* ============================================
+     CONTAINER
+     ============================================ */
+  --container-max-width: 1320px;
+  --container-max-width-large: 1440px;
+  --container-padding: clamp(1rem, 4vw, 3.75rem);
+  --container-padding-mobile: clamp(1rem, 3vw, 2rem);
+  
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-3xl: 30px;
+  --radius-full: 50%;
+  --radius-image: 400px;
+  
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  --shadow-sm: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0px 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0px 10px 40px rgba(0, 0, 0, 0.15);
+  --shadow-button: 0px 4px 20px rgba(39, 71, 96, 0.17);
+  --shadow-button-hover: 0px 6px 25px rgba(39, 71, 96, 0.25);
+  --shadow-pagination: 0px 4px 20px rgba(21, 32, 70, 0.07);
+  --shadow-award: 0px 0px 20px var(--color-shadow-award);
+  --shadow-hero: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  
+  /* ============================================
+     TRANSITIONS
+     ============================================ */
+  --transition-base: 0.3s ease;
+  --transition-fast: 0.2s ease;
+  --transition-all: all 0.3s ease;
+  
+  /* ============================================
+     GRADIENTS
+     ============================================ */
+  --gradient-primary: linear-gradient(107.31deg, #F24570 0%, #274760 100%);
+  --gradient-treatments: linear-gradient(135deg, #F24570 0%, #9B59B6 50%, #3498DB 100%);
+  --gradient-avatar: linear-gradient(135deg, #D2EAEF 0%, #86BBF1 100%);
+  
+  /* ============================================
+     ASPECT RATIOS
+     ============================================ */
+  --aspect-ratio-blog-image: 4 / 3;
+}
+
+* {
+  box-sizing: border-box;
+}
+

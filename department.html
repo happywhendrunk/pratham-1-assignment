@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Details</title>
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="department.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="about.html">About</a>
+                <a href="#">Find Carer</a>
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Pages ▾</a>
+                </div>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="department-hero">
+        <div class="department-hero-container">
+            <div class="department-hero-header">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <span class="breadcrumb-item">Home</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item">departments</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item">department-details</span>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-bar-wrapper">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search Doctors" class="search-input">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="department-hero-content">
+                <!-- Left Section -->
+                <div class="department-left">
+                    <h1 class="department-title">Human Psychology</h1>
+                    <p class="department-description">
+                        This department specializes in the care of infants, children, adolescents, and provides a range of services including preventive care, developmental screenings, and treatment of childhood illnesses and conditions.
+                    </p>
+                </div>
+
+                <!-- Right Section -->
+                <div class="department-right">
+                    <div class="department-image-wrapper">
+                        <img src="./images/hero_img1.png" alt="Medical professionals" class="department-image">
+                        
+                        <!-- Floating Card -->
+                        <div class="available-doctor-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Available Doctor</h3>
+                                <button class="menu-icon" aria-label="Menu">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="select-doctor-text">Select Doctor</p>
+                            
+                            <div class="doctor-list">
+                                <!-- Doctor 1 -->
+                                <div class="doctor-item">
+                                    <div class="doctor-avatar-wrapper">
+                                        <div class="avatar-background"></div>
+                                        <img src="./images/doctor1.png" alt="Dr. Susan Bones" class="doctor-avatar">
+                                        <span class="availability-dot"></span>
+                                    </div>
+                                    <div class="doctor-details">
+                                        <h4 class="doctor-name-card">Dr. Susan Bones, MD</h4>
+                                        <p class="doctor-specialty-card">Pediatric Specialist</p>
+                                    </div>
+                                </div>
+
+                                <!-- Doctor 2 -->
+                                <div class="doctor-item">
+                                    <div class="doctor-avatar-wrapper">
+                                        <div class="avatar-background"></div>
+                                        <img src="./images/doctor.png" alt="Dr. David Angelo" class="doctor-avatar">
+                                        <span class="availability-dot"></span>
+                                    </div>
+                                    <div class="doctor-details">
+                                        <h4 class="doctor-name-card">Dr. David Angelo, MD</h4>
+                                        <p class="doctor-specialty-card">Pediatric Specialist</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section class="treatments-section">
+        <div class="treatments-container">
+            <div class="treatments-header">
+                <span class="treatments-label">MORE TYPE OF</span>
+                <h2 class="treatments-title">Treatments</h2>
+            </div>
+
+            <div class="treatments-grid">
+                <!-- Treatment Card 1 -->
+                <div class="treatment-card">
+                    <div class="treatment-icon-wrapper">
+                        <div class="treatment-icon-circle">
+                            <img src="./images/vaccination.png" alt="Vaccination" class="treatment-icon">
+                        </div>
+                    </div>
+                    <h3 class="treatment-card-title">Vaccinations Department</h3>
+                    <p class="treatment-card-description">The Pediatric Department provides vaccinations to help protect children from a range of illnesses and diseases, including measles.</p>
+                </div>
+
+                <!-- Treatment Card 2 -->
+                <div class="treatment-card">
+                    <div class="treatment-icon-wrapper">
+                        <div class="treatment-icon-circle">
+                            <img src="./images/acute-illness.png" alt="Acute Illness" class="treatment-icon">
+                        </div>
+                    </div>
+                    <h3 class="treatment-card-title">Management of acute illnesses</h3>
+                    <p class="treatment-card-description">The Pediatric Department provides treatment for common childhood illnesses, such as ear infections, strep throat, and viral infections.</p>
+                </div>
+
+                <!-- Treatment Card 3 -->
+                <div class="treatment-card">
+                    <div class="treatment-icon-wrapper">
+                        <div class="treatment-icon-circle">
+                            <img src="./images/treatment-chronic.png" alt="Chronic Conditions" class="treatment-icon">
+                        </div>
+                    </div>
+                    <h3 class="treatment-card-title">Treatment of chronic conditions</h3>
+                    <p class="treatment-card-description">The Pediatric Department provides ongoing care and treatment for children with chronic conditions such as asthma, diabetes, and allergies.</p>
+                </div>
+
+                <!-- Treatment Card 4 -->
+                <div class="treatment-card">
+                    <div class="treatment-icon-wrapper">
+                        <div class="treatment-icon-circle">
+                            <img src="./images/dev-screening.png" alt="Developmental Screening" class="treatment-icon">
+                        </div>
+                    </div>
+                    <h3 class="treatment-card-title">Developmental screenings</h3>
+                    <p class="treatment-card-description">The Pediatric Department provides regular developmental screenings to identify any delays or concerns and provide early intervention services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Doctor Section -->
+    <section class="related-doctor-section">
+        <div class="related-doctor-container">
+            <div class="related-doctor-content">
+                <!-- Left Column: Doctor Image -->
+                <div class="related-doctor-left">
+                    <img src="./images/doctor.png" alt="Dr. Paras Shrestha" class="related-doctor-image">
+                </div>
+
+                <!-- Right Column: Title, Profile Card, Social Icons, Action Buttons -->
+                <div class="related-doctor-right">
+                    <h2 class="related-doctor-title">
+                        <span>Related</span>
+                        <span>Doctor</span>
+                    </h2>
+                    
+                    <!-- Doctor Profile Card -->
+                    <div class="related-doctor-card">
+                        <div class="related-doctor-info">
+                            <h3 class="related-doctor-name">Dr. Paras Shrestha</h3>
+                            <p class="related-doctor-specialty">Paediatrician</p>
+                            <p class="related-doctor-description">With experience in managing complex medical conditions in children</p>
+                            
+                            <!-- Social Media Icons -->
+                            <div class="related-doctor-social">
+                                <a href="#" class="social-icon-circle" aria-label="Facebook">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon-circle" aria-label="LinkedIn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon-circle" aria-label="Twitter">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons Bar -->
+                        <div class="related-doctor-actions">
+                            <div>
+                                <button class="action-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Availability</span>
+                                </button>
+                                <button class="action-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Call</span>
+                                </button>
+                                <button class="action-btn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>Chat</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button class="action-btn booking-btn">
+                                    <span>Booking</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="related-doctor-navigation">
+                <div class="pagination-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="navigation-arrows">
+                    <button class="nav-arrow-btn" aria-label="Previous">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow-btn" aria-label="Next">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+        <div class="appointment-container">
+            <!-- Left Section: Appointment Form -->
+            <div class="appointment-form-wrapper">
+                <h2 class="appointment-title">
+                    <span class="title-part-1">BOOK AN</span>
+                    <span class="title-part-2">Appointment</span>
+                </h2>
+
+                <form class="appointment-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="David John">
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(123) 456 - 789">
+                    </div>
+
+                    <!-- Medical Record Number Field -->
+                    <div class="form-group">
+                        <label for="medical-record" class="form-label">Medical Record Number</label>
+                        <input type="text" id="medical-record" name="medical-record" class="form-input" placeholder="123456-7890-0987">
+                    </div>
+
+                    <!-- Preferred Date Field -->
+                    <div class="form-group">
+                        <label for="preferred-date" class="form-label">Preferred Date</label>
+                        <input type="date" id="preferred-date" name="preferred-date" class="form-input" placeholder="dd/mm/yyyy">
+                    </div>
+
+                    <!-- Preferred Time Field -->
+                    <div class="form-group">
+                        <label for="preferred-time" class="form-label">Preferred Time</label>
+                        <input type="time" id="preferred-time" name="preferred-time" class="form-input" placeholder="— — — —">
+                    </div>
+
+                    <!-- Reason for Visit Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Reason for Visit</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="routine" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Routine Checkup</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="new-patient" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">New Patient Visit</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="specific" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Specific Concern</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Department Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Department</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="pediatric" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pediatric</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="obgyn" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Obstetrics and Gynecology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="cardiology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Cardiology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="neurology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Neurology</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <span>Submit</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Section: Medical Professionals Image -->
+            <div class="appointment-image-wrapper">
+                <img src="./images/appointment.png" alt="Medical professionals" class="appointment-image">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="#">About Us</a>
+                    <a href="#">Departments</a>
+                    <a href="#">Doctors</a>
+                    <a href="#">Timetable</a>
+                    <a href="#">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="#">Blog</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
