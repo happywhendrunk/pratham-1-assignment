@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Harmonie Health</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="contact.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
             </div>
 
             <nav class="nav-links">
-                <a href="#">Home</a>
+                <a href="./index.html">Home</a>
                 <a href="#">About</a>
                 <a href="#">Find Carer</a>
                 <a href="#">Blog</a>
@@ -31,52 +31,80 @@
         </div>
     </header>
 
-    <section class="signin-container">
-        <div class="signin-card">
+    <div class="wrapper">
+        <section class="contact-hero-background">
+            <div class="contact-form-div">
+                <h2 class="contact-form-header">
+                    <p> Contact Us</p>
+                    <p class="contact-form-header-sub">Kindly reach us to get the fastest response and treatment</p>
+                </h2>
+            </div>
+            <div class="contact-hero-image">
+                <img src="./images/contact_us_banner.png" alt="nurse contact">
+            </div>
+        </section>
 
-            <div class="signin-form-wrapper">
-                <h2 class="signin-header">Sign In to Your Account</h2>
+        <section class="contact-section-container">
+            <div class="contact-card">
 
-                <form id="signInForm" class="signin-form">
+                <div class="contact-form-wrapper">
 
-                    <div class="input-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email" id="email" placeholder="john@harmoniehealth.com" required>
-                    </div>
 
-                    <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" required>
-                    </div>
+                    <form id="contactForm" class="contact-form">
 
-                    <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox" name="remember" id="remember">
-                            <span>Remember Me</span>
-                        </label>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                    </div>
+                        <div class="contact-grid">
+                            <div class="contact-input-group">
+                                <label for="contact-name">Full Name</label>
+                                <input type="text" name="contact-name" id="contact-name" required
+                                    placeholder="John Doe">
+                            </div>
+                            <div class="contact-input-group">
+                                <label for="contact-email">Email Address</label>
+                                <input type="email" name="contact-email" id="contact-email" required
+                                    placeholder="example@email.com">
+                            </div>
+                        </div>
 
-                    <button type="submit" class="submit-btn">
-                        Sign In <span class="arrow">→</span>
-                    </button>
+                        <div class="contact-grid">
+                            <div class="contact-input-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" name="contact-phone" id="contact-phone" placeholder="(123) 456-7890">
+                            </div>
+                            <div class="contact-input-group">
+                                <label for="contact-subject">Subject</label>
+                                <input type="text" name="contact-subject" id="contact-subject" required
+                                    placeholder="General Inquiry">
+                            </div>
+                        </div>
 
-                    <p class="signup-prompt">
-                        Don't have an account? <a href="#" class="signup-link">Sign Up</a>
-                    </p>
+                        <div class="contact-input-group">
+                            <label for="contact-message">Your Message</label>
+                            <textarea name="contact-message" id="contact-message" rows="5" required
+                                placeholder="How can we help you?"></textarea>
+                        </div>
 
-                </form>
+                        <div>
+                            <button type="submit" class="contact-submit-btn">
+                                Send Message <span class="arrow">→</span>
+                            </button>
+                        </div>
+
+                        <p id="contactStatusMessage"></p>
+
+                    </form>
+                </div>
+
 
 
             </div>
-        </div>
-    </section>
+        </section>
 
+    </div>
     <footer class="footer">
         <!-- Shield Logo -->
         <div class="shield-container">
             <div class="shield">
-                <img class="logo-image" src="./images/Frame.png" alt="footer logo">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
             </div>
         </div>
 

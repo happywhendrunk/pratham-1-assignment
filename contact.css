@@ -1,0 +1,170 @@
+/* --- CONTACT US SECTION STYLING --- */
+
+:root {
+  --contact-pink-primary: #f24570;
+  --contact-text-dark: #3f0931;
+  --contact-text-secondary: #555;
+  --contact-background: #f7f7f7;
+  --contact-header-sub: #a1a1a1;
+}
+
+.navbar {
+  width: 100%;
+  background: linear-gradient(to right, #f24570, #f6917c);
+  height: fit-content;
+  padding: 18px 40px;
+}
+
+.contact-hero-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: linear-gradient(to right, #f24570, #f6917c);
+}
+.contact-hero-image {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.contact-section-container {
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: -80px auto;
+}
+
+.contact-card {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 1. Contact Form Styling (Left Side) */
+.contact-form-wrapper {
+  flex: 1.5;
+  padding: 50px 70px 50px 70px;
+  min-width: 450px;
+}
+
+.contact-form-header {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  line-height: 2;
+}
+
+.contact-form-header-sub {
+  font-size: 1rem;
+  color: #fefeff; /* Subtly lighter text color */
+  font-weight: 500;
+  margin: 20px;
+}
+
+.contact-form-header {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fefeff;
+  margin: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.contact-input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--contact-text-secondary);
+  margin-bottom: 5px;
+}
+
+.contact-input-group input,
+.contact-input-group textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--contact-text-dark);
+  box-shadow: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  resize: vertical;
+}
+
+.contact-input-group input:focus,
+.contact-input-group textarea:focus {
+  border-color: var(--contact-pink-primary);
+  box-shadow: 0 0 0 1px var(--contact-pink-primary);
+  outline: none;
+}
+
+.contact-submit-btn {
+  width: 180px;
+  padding: 10px 20px;
+  margin-top: 15px;
+  background: linear-gradient(to right, #ec4899, var(--contact-pink-primary));
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* 2. Banner Image Styling (Right Side) */
+.contact-image-section {
+  flex: 1;
+  position: relative;
+  /* Optional: Apply a subtle pink background to the section itself */
+  background-color: #fce7f3;
+}
+
+.contact-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 15px 15px 0; /* Match card corner */
+  display: block; /* Remove space under image */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1050px) {
+  .contact-card {
+    flex-direction: column;
+    max-width: 600px;
+  }
+  .contact-form-wrapper {
+    padding: 40px 30px 20px 30px;
+    min-width: auto;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-image-section {
+    min-height: 250px;
+  }
+  .contact-banner-img {
+    border-radius: 0 0 15px 15px;
+  }
+}
