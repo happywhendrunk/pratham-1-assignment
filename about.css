@@ -1,11 +1,4 @@
-/* ============================================
-   ABOUT PAGE - MODERN RESPONSIVE CSS
-   Refactored: 2025
-   ============================================ */
 
-/* ============================================
-   CSS CUSTOM PROPERTIES (Design Tokens)
-   ============================================ */
 :root {
   /* Colors */
   --color-primary: #F24570;
@@ -62,9 +55,6 @@
   --transition-fast: 0.2s ease;
 }
 
-/* ============================================
-   RESET & BASE STYLES
-   ============================================ */
 * {
   box-sizing: border-box;
 }
@@ -91,7 +81,7 @@
 @media (min-width: 768px) {
   .hero {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
   }
 }
@@ -139,7 +129,7 @@
   .hero-right {
     width: 48%;
     padding-left: var(--spacing-md);
-    padding-bottom: var(--spacing-xl);
+    align-self: center;
   }
 }
 
