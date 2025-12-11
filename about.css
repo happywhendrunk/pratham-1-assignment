@@ -350,9 +350,7 @@
   fill: var(--color-white);
 }
 
-/* ============================================
-   WHY CHOOSE US SECTION
-   ============================================ */
+/*WHY CHOOSE US SECTION*/
 .why-choose-us {
   width: 100%;
   padding: var(--spacing-section) var(--container-padding);
@@ -371,9 +369,11 @@
   .why-choose-us-container {
     flex-direction: row;
     align-items: flex-start;
+    gap: var(--spacing-xl);
   }
 }
 
+/* Left Column: Image */
 .why-choose-us-image {
   width: 100%;
   max-width: 481px;
@@ -385,6 +385,7 @@
 @media (min-width: 1024px) {
   .why-choose-us-image {
     width: 481px;
+    flex: 0 0 481px;
   }
 }
 
@@ -402,16 +403,19 @@
   }
 }
 
+/* Right Column: Content (Header + Points Grid) */
 .why-choose-us-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   background: var(--color-white);
-  padding: var(--spacing-lg);
+  /* padding: var(--spacing-lg); */
   border-radius: var(--radius-lg);
 }
 
 @media (min-width: 1024px) {
   .why-choose-us-content {
-    padding: var(--spacing-xl);
+    /* padding: var(--spacing-xl); */
   }
 }
 
@@ -424,21 +428,23 @@
   margin: 0 0 var(--spacing-xl) 0;
 }
 
+/* Two-column grid for points on desktop */
 .why-choose-us-points {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .why-choose-us-points {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
   }
 }
 
 .why-choose-us-point {
   background: var(--color-white);
-  padding: var(--spacing-md);
+  /* padding: var(--spacing-md); */
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
