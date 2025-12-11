@@ -1,86 +1,21 @@
+/* ============================================
+   DEPARTMENT PAGE - PAGE-SPECIFIC VARIABLES
+   ============================================ */
 :root {
-  /* Colors */
-  --color-primary: #F24570;
-  --color-primary-dark: #E03D5F;
-  --color-secondary: #274760;
-  --color-secondary-light: rgba(39, 71, 96, 0.52);
-  --color-secondary-border: rgba(48, 123, 196, 0.5);
-  --color-secondary-border-focus: rgba(48, 123, 196, 0.8);
-  --color-accent-green: #014C1F;
-  --color-accent-orange: #F64D09;
-  --color-accent-blue: #307BC4;
-  --color-accent-blue-light: rgba(48, 123, 196, 0.1);
-  --color-white: #FFFFFF;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-text-light: rgba(255, 255, 255, 0.9);
-  --color-breadcrumb: rgba(230, 25, 7, 0.52);
-  --color-success: #4CAF50;
-  --color-border: #E8E8E8;
-  
-  /* Typography */
-  --font-heading: 'Inter', sans-serif;
-  --font-body: 'Poppins', sans-serif;
-  
-  /* Spacing Scale */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 20px;
-  --spacing-2xl: 24px;
-  --spacing-3xl: 30px;
-  --spacing-4xl: 40px;
-  --spacing-5xl: 50px;
-  --spacing-6xl: 60px;
-  --spacing-7xl: 80px;
-  
-  /* Container */
-  --container-max-width: 1440px;
   --container-max-width-content: 1320px;
-  --container-padding: 60px;
-  --container-padding-mobile: 20px;
   
-  /* Border Radius */
-  --radius-sm: 10px;
-  --radius-md: 15px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
-  --radius-full: 50%;
-  --radius-image: 400px;
-  
-  /* Shadows */
-  --shadow-sm: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
-  --shadow-md: 0px 10px 40px rgba(0, 0, 0, 0.15);
-  --shadow-button: 0px 4px 20px rgba(39, 71, 96, 0.17);
-  --shadow-button-hover: 0px 6px 25px rgba(39, 71, 96, 0.25);
-  
-  /* Transitions */
-  --transition-base: 0.3s ease;
-  --transition-all: all 0.3s ease;
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(107.31deg, #F24570 0%, #274760 100%);
-  --gradient-treatments: linear-gradient(135deg, #F24570 0%, #9B59B6 50%, #3498DB 100%);
-  --gradient-avatar: linear-gradient(135deg, #D2EAEF 0%, #86BBF1 100%);
-  
-  /* Form */
+  /* Form-specific variables */
   --form-input-height: 60px;
   --form-input-padding: 17px 21px;
   --form-input-padding-icon: 17px 51px 17px 21px;
   --form-label-margin-bottom: 12px;
   --form-group-gap: 20px;
   
-  /* Layout */
+  /* Layout-specific variables */
   --hero-image-height: 600px;
   --related-doctor-image-height: 600px;
   --appointment-image-width: 526px;
   --appointment-image-height: 655.08px;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 /* ============================================
