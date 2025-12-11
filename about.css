@@ -575,7 +575,7 @@
   color: var(--color-primary);
   text-transform: uppercase;
   display: block;
-  margin-bottom: var(--spacing-xs);
+  /* margin-bottom: var(--spacing-xs); */
 }
 
 .experts-title {
@@ -606,9 +606,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
   
-  .expert-card:nth-child(2) {
+  /* .expert-card:nth-child(2) {
     margin-top: var(--spacing-xl);
-  }
+  } */
 }
 
 .expert-card {
