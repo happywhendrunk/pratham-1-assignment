@@ -1,0 +1,112 @@
+/* --- Main Layout Grid --- */
+.schedule-container {
+  display: grid;
+  padding: 20px;
+
+  /* Columns: Auto for Time Axis, then 6 equal columns for the days */
+  grid-template-columns: 80px repeat(6, 1fr);
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+/* The Time Axis and the Appointment Grid share the same row definitions */
+/* 1 row = 1 hour, from 8:00 AM (row 1) to 9:00 PM (row 14) */
+.time-axis,
+.day-column {
+  display: grid;
+  /* 13 rows for the 13 full hours (8-9, 9-10, ..., 8-9) */
+  grid-template-rows: repeat(13, 100px);
+  /* The 100px height is a visually pleasing size for the 1-hour slots */
+  min-height: 1300px;
+}
+
+/* --- Time Axis Styling --- */
+.time-axis {
+  position: sticky; /* Keep it visible while scrolling horizontally */
+  left: 0;
+  z-index: 10;
+  background-color: white;
+  border-right: 1px solid #eee;
+}
+
+.time-slot {
+  /* Time slots are placed on the grid line between the hours */
+  align-self: flex-start;
+  margin-top: -8px; /* Offset the text to sit on the line */
+  font-size: 0.8em;
+  color: #999;
+  padding-right: 5px;
+  text-align: right;
+}
+
+/* Special alignment for the first time slot (8:00 AM) */
+.time-slot:first-child {
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: -15px;
+}
+
+/* --- Appointment Grid Styling --- */
+.days-grid {
+  display: contents; /* Allows children (day-column) to be direct grid items of schedule-container */
+}
+
+.day-column {
+  border-right: 1px solid #eee;
+  padding: 0 5px; /* Padding for visual separation from the border */
+}
+
+.day-column:last-child {
+  border-right: none;
+}
+
+/* --- Appointment Slot Styling --- */
+.appointment {
+  background-color: #f7a2b5; /* Pink color from the image */
+  color: #333;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 5px 0; /* Vertical margin to separate slots */
+  position: relative;
+  overflow: hidden;
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Default alignment */
+  /* Ensure appointments are placed exactly where the grid-row dictates */
+  min-height: 0;
+}
+
+/* Text styles within the appointment box */
+.department {
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-bottom: 2px;
+}
+
+.time {
+  font-size: 0.85em;
+  margin-bottom: 5px;
+  color: #333; /* Slightly darker text for contrast */
+}
+
+.doctor {
+  font-size: 0.8em;
+  line-height: 1.2;
+}
+
+.room {
+  font-size: 0.75em;
+  font-style: italic;
+  margin-top: auto; /* Pushes the room text to the bottom */
+}
+
+/* Style for room numbers that are deliberately pushed to the bottom, 
+   like "Emergency Room" or "Gymnasium" when the appointment is long */
+.room.bottom-align {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}

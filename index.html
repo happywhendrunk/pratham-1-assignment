@@ -7,25 +7,47 @@
     <title>Harmonie Health</title>
     <link rel="stylesheet" href="variables.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="department.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
+        // Handle everything inside DOMContentLoaded to ensure elements exist
+        document.addEventListener('DOMContentLoaded', async () => {
+            const navLinks = document.getElementById('navLinks');
             const appointmentForm = document.getElementById('appointmentForm');
+
+            // 1. Setup Appointment Form Listener
             if (appointmentForm) {
                 appointmentForm.addEventListener('submit', handleAppointmentSubmission);
             }
+
+            // 2. Check Authentication Status and Update UI
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
         });
 
-        // Function to handle form submission and send data to Node.js backend
+        // Handle Appointment Submission
         async function handleAppointmentSubmission(event) {
             event.preventDefault();
-
             const form = event.target;
-            const statusMessage = document.getElementById('appointmentStatusMessage');
-
-            statusMessage.textContent = 'Scheduling appointment...';
-            statusMessage.className = 'mt-4 text-center font-semibold text-blue-600';
 
             const appointmentData = {
                 name: form.name.value,
@@ -33,36 +55,55 @@
                 email: form.email.value,
                 date: form.date.value,
                 time: form.time.value,
-                reason: form.reason.value,
-                department: form.department.value,
+                reason: form.reason ? form.reason.value : "",
+                department: form.department ? form.department.value : "",
                 timestamp: new Date().toISOString(),
             };
 
-
             try {
-                // Send data to the Node.js Express API endpoint
-                // NOTE: This assumes your Node.js server (server.js) is running locally on port 3000
-                const response = await fetch('http://localhost:3000/api/appointments', {
+                const response = await fetch('http://127.0.0.1:3000/api/appointments', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(appointmentData),
+                    credentials: 'include'
                 });
 
                 const result = await response.json();
 
-                if (response.ok) {
-                    statusMessage.textContent = `Appointment scheduled successfully! Booking ID: ${result.id}`;
-                    statusMessage.className = 'mt-4 text-center font-semibold text-green-600';
-                    form.reset(); // Clear the form on success
+                if (response.status === 401) {
+                    alert('You must be logged in to book an appointment.');
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                if (response.status === 201) {
+                    alert('Your appointment has been scheduled successfully.');
+                    form.reset();
+                    window.location.href = 'index.html';
                 } else {
-                    throw new Error(result.message || 'Failed to schedule appointment on the server.');
+                    throw new Error(result.message || 'Failed to schedule appointment.');
                 }
             } catch (error) {
-                console.error("Error scheduling appointment:", error);
-                statusMessage.textContent = `Error: ${error.message}. Check if your Node.js server is running on http://localhost:3000.`;
-                statusMessage.className = 'mt-4 text-center font-semibold text-red-600';
+                console.error("Error:", error);
+                alert(`Error: ${error.message}`);
+            }
+        }
+
+        // Handle Logout
+        async function handleLogout(event) {
+            event.preventDefault();
+            try {
+                const response = await fetch('http://127.0.0.1:3000/logout', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    alert('You have been logged out.');
+                    window.location.href = 'index.html';
+                }
+            } catch (error) {
+                console.error("Logout failed:", error);
             }
         }
     </script>
@@ -76,15 +117,24 @@
                 <a href="./index.html"><img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo"></a>
             </div>
 
-            <nav class="nav-links">
+            <nav class="nav-links" id="navLinks">
                 <a href="#">Home</a>
                 <a href="about.html">About</a>
                 <a href="#">Find Carer</a>
-                <a href="#">Blog</a>
+                <a href="blogs.html">Blog</a>
                 <div class="dropdown">
-                    <a href="#">Pages ▾</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
                 </div>
-                <a href="/contact.html">Contact</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
             </nav>
 
         </div>
@@ -106,7 +156,7 @@
 
 
             <p class="signup-text">
-                Don’t have an account? <a href="#">Sign up here</a>
+                Don’t have an account? <a href="/signup.html">Sign up here</a>
             </p>
         </div>
 
@@ -406,106 +456,117 @@
 
 
 
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+        <div class="appointment-container">
+            <!-- Left Section: Appointment Form -->
+            <div class="appointment-form-wrapper">
+                <h2 class="appointment-title">
+                    <span class="title-part-1">BOOK AN</span>
+                    <span class="title-part-2">Appointment</span>
+                </h2>
 
-    <!-- Appointment Form Section -->
-    <main class="appointment-container">
-        <div class="appointment-card">
-            <h2 class="appointment-form-header">
-                <p class="appointment-form-header-sub">Book An</p>
-                <p>Appointment</p>
-            </h2>
-
-            <form id="appointmentForm" class="appointment-form">
-
-                <!-- Row 1: Name and Phone -->
-                <div class="appointment-grid">
-                    <div class="appointment-input-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" required>
+                <form id="appointmentForm" class="appointment-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="David John">
                     </div>
-                    <div class="appointment-input-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" required>
-                    </div>
-                </div>
 
-                <!-- Row 2: Email -->
-                <div class="appointment-input-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
-
-                <!-- Row 3: Date and Time -->
-                <div class="appointment-grid">
-                    <div class="appointment-input-group">
-                        <label for="date">Preferred Date</label>
-                        <input type="date" name="date" id="date" required>
+                    <!-- Phone Number Field -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(123) 456 - 789">
                     </div>
-                    <div class="appointment-input-group">
-                        <label for="time">Preferred Time</label>
-                        <input type="time" name="time" id="time" required>
-                    </div>
-                </div>
 
-                <!-- Row 4: Reason for Booking (Radio Buttons) -->
-                <div>
-                    <label class="appointment-input-group">Reason for the Booking</label>
-                    <div class="appointment-radio-group">
-                        <label>
-                            <input type="radio" name="reason" value="Routine Checkup" checked>
-                            <span>Routine Checkup</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="reason" value="New Patient Visit">
-                            <span>New Patient Visit</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="reason" value="Specific Concern">
-                            <span>Specific Concern</span>
-                        </label>
+                    <!-- Medical Record Number Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" id="email" name="email" class="form-input" placeholder="anything@domain.com">
                     </div>
-                </div>
 
-                <!-- Row 5: Department (Radio Buttons) -->
-                <div>
-                    <label class="appointment-input-group">Department</label>
-                    <div class="appointment-radio-group">
-                        <label>
-                            <input type="radio" name="department" value="Pediatric" checked>
-                            <span>Pediatric</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="department" value="OBGYN">
-                            <span>Obstetrics and Gynecology</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="department" value="Cardiology">
-                            <span>Cardiology</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="department" value="Neurology">
-                            <span>Neurology</span>
-                        </label>
+                    <!-- Preferred Date Field -->
+                    <div class="form-group">
+                        <label for="date" class="form-label">Preferred Date</label>
+                        <input type="date" id="date" name="date" class="form-input" placeholder="dd/mm/yyyy">
                     </div>
-                </div>
 
-                <!-- Submission Button -->
-                <div>
-                    <button type="submit" class="appointment-submit-btn">
-                        Submit
+                    <!-- Preferred Time Field -->
+                    <div class="form-group">
+                        <label for="timestamp" class="form-label">Preferred Time</label>
+                        <input type="time" id="time" name="timestamp" class="form-input" placeholder="— — — —">
+                    </div>
+
+                    <!-- Reason for Visit Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Reason for Visit</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="routine" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Routine Checkup</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="new-patient" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">New Patient Visit</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="specific" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Specific Concern</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Department Radio Buttons -->
+                    <div class="form-group">
+                        <label class="form-label">Department</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="pediatric" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Pediatric</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="obgyn" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Obstetrics and Gynecology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="cardiology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Cardiology</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="department" value="neurology" class="radio-input">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Neurology</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <span>Submit</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </button>
-                </div>
+                </form>
+            </div>
 
-                <!-- Status Message Area -->
-                <p id="appointmentStatusMessage"></p>
 
-            </form>
 
+            <!-- Right Section: Medical Professionals Image -->
+            <div class="appointment-image-wrapper">
+                <img src="./images/appointment.png" alt="Medical professionals" class="appointment-image">
+            </div>
         </div>
-        <div class="image-section">
-            <img src="/images/appointment.png" alt="Doctor Image">
-        </div>
-    </main>
+    </section>
+
+
 
     <section class="faq-section">
         <div class="faq-header">
@@ -629,18 +690,18 @@
             <div class="footer-links">
                 <!-- Column 1 -->
                 <div class="link-column">
-                    <a href="#">About Us</a>
-                    <a href="#">Departments</a>
-                    <a href="#">Doctors</a>
-                    <a href="#">Timetable</a>
-                    <a href="#">Appointment</a>
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
                     <a href="#">Testimonials</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="link-column">
-                    <a href="#">Blog</a>
-                    <a href="#">Contact Us</a>
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
                     <a href="#">FAQs</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms and Conditions</a>

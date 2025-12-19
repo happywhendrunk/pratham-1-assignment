@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmonie Health</title>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="user-dashboard.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="contact.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const navLinks = document.getElementById('navLinks');
@@ -34,6 +31,30 @@
             } catch (error) {
                 console.log("User not logged in:", error);
             }
+
+            const dashboardResponse = await fetch('http://127.0.0.1:3000/api/dashboard', { credentials: 'include' });
+            const data = await dashboardResponse.json();
+
+            if (dashboardResponse.ok) {
+                // Update Welcome Message
+                const welcomeMessage = document.getElementById('welcome-message');
+                welcomeMessage.textContent = `Welcome, ${data.username}`;
+
+                // Update Appointments List
+                if (data.appointments.length > 0) {
+                    const appointmentsList = document.getElementById('appointments-list');
+                    appointmentsList.innerHTML = data.appointments.map(app => `
+                        <li class="appointment-item">
+                            <strong>${new Date(app.date).toLocaleDateString()}</strong> 
+                            - ${app.reason} at ${app.time} 
+                            <span class="dept-tag">(${app.department})</span>
+                        </li>
+                    `).join('');
+                } else {
+                    appointmentsList.innerHTML = '<li>No appointments found.</li>';
+                }
+            }
+
             async function handleLogout(event) {
                 event.preventDefault();
                 try {
@@ -51,106 +72,51 @@
                 }
             }
         });
+
+
     </script>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-            </div>
-
-            <nav class="nav-links" id="navLinks">
-                <a href="/index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="#">Find Carer</a>
-                <a href="blogs.html">Blog</a>
-                <div class="dropdown">
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Pages</a>
-                        <div class="dropdown-content">
-                            <a href="/department.html">Departments</a>
-                            <a href="/find-doctor.html">Doctors</a>
-                            <a href="/timetable.html">Timetable</a>
-                            <a href="/appointments.html">Appointment</a>
-                        </div>
-                    </li>
+    <header>
+        <header class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="./index.html"><img class="logo-img" src="./images/logo1.png"
+                            alt="Harmonie Health Logo"></a>
                 </div>
-                <a href="/contact.html">Contact</a>
-            </nav>
 
-        </div>
+                <nav class="nav-links" id="navLinks">
+                    <a href="/index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="#">Find Carer</a>
+                    <a href="blogs.html">Blog</a>
+                    <div class="dropdown">
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">Pages</a>
+                            <div class="dropdown-content">
+                                <a href="/department.html">Departments</a>
+                                <a href="/find-doctor.html">Doctors</a>
+                                <a href="/timetable.html">Timetable</a>
+                                <a href="/appointments.html">Appointment</a>
+                            </div>
+                        </li>
+                    </div>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html">Login</a>
+                </nav>
+
+            </div>
+        </header>
+
     </header>
 
-    <div class="wrapper">
-        <section class="contact-hero-background">
-            <div class="contact-form-div">
-                <h2 class="contact-form-header">
-                    <p> Contact Us</p>
-                    <p class="contact-form-header-sub">Kindly reach us to get the fastest response and treatment</p>
-                </h2>
-            </div>
-            <div class="contact-hero-image">
-                <img src="./images/contact_us_banner.png" alt="nurse contact">
-            </div>
-        </section>
+    <main>
+        <h2 id="welcome-message">Welcome, {{username}}</h2>
+        <h3>Your Appointments:</h3>
+        <ul id="appointments-list"></ul>
+    </main>
 
-        <section class="contact-section-container">
-            <div class="contact-card">
-
-                <div class="contact-form-wrapper">
-
-
-                    <form id="contactForm" class="contact-form">
-
-                        <div class="contact-grid">
-                            <div class="contact-input-group">
-                                <label for="contact-name">Full Name</label>
-                                <input type="text" name="contact-name" id="contact-name" required
-                                    placeholder="John Doe">
-                            </div>
-                            <div class="contact-input-group">
-                                <label for="contact-email">Email Address</label>
-                                <input type="email" name="contact-email" id="contact-email" required
-                                    placeholder="example@email.com">
-                            </div>
-                        </div>
-
-                        <div class="contact-grid">
-                            <div class="contact-input-group">
-                                <label for="contact-phone">Phone Number</label>
-                                <input type="tel" name="contact-phone" id="contact-phone" placeholder="(123) 456-7890">
-                            </div>
-                            <div class="contact-input-group">
-                                <label for="contact-subject">Subject</label>
-                                <input type="text" name="contact-subject" id="contact-subject" required
-                                    placeholder="General Inquiry">
-                            </div>
-                        </div>
-
-                        <div class="contact-input-group">
-                            <label for="contact-message">Your Message</label>
-                            <textarea name="contact-message" id="contact-message" rows="5" required
-                                placeholder="How can we help you?"></textarea>
-                        </div>
-
-                        <div>
-                            <button type="submit" class="contact-submit-btn">
-                                Send Message <span class="arrow">→</span>
-                            </button>
-                        </div>
-
-                        <p id="contactStatusMessage"></p>
-
-                    </form>
-                </div>
-
-
-
-            </div>
-        </section>
-
-    </div>
     <footer class="footer">
         <!-- Shield Logo -->
         <div class="shield-container">
@@ -227,6 +193,7 @@
         </div>
     </footer>
 
+    <script src="js/dashboard.js"></script>
 </body>
 
 </html>

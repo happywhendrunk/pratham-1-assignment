@@ -10,6 +10,50 @@
     <link rel="stylesheet" href="find-doctor.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const navLinks = document.getElementById('navLinks');
+
+            // 2. Check Authentication Status and Update UI
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
+            async function handleLogout(event) {
+                event.preventDefault();
+                try {
+                    const response = await fetch('http://127.0.0.1:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                    if (response.ok) {
+                        alert('You have been logged out.');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -20,15 +64,24 @@
                 <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
             </div>
 
-            <nav class="nav-links">
-                <a href="#">Home</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="#">Find Carer</a>
-                <a href="#">Blog</a>
+                <a href="blogs.html">Blog</a>
                 <div class="dropdown">
-                    <a href="#">Pages ▾</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
                 </div>
-                <a href="#">Contact</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
             </nav>
 
         </div>
@@ -36,11 +89,12 @@
 
     <section class="hero">
         <div class="hero-left">
-            <h1 class="hero-title" >
+            <h1 class="hero-title">
                 <span class="title-line-1" style="color: #FFFFFF;">Introduce You to</span>
                 <span class="title-line-2" style="color: #FFFFFF;">Our Experts</span>
             </h1>
-            <p class="hero-subtitle" style="color: #000000;">The list of doctors and carers with years of professional experiences</p>
+            <p class="hero-subtitle" style="color: #000000;">The list of doctors and carers with years of professional
+                experiences</p>
         </div>
         <div class="hero-right">
             <!--  -->
@@ -65,17 +119,17 @@
                     <span class="showing-items">Showing 12 items</span>
                     <button class="view-btn active" aria-label="Grid view">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                            <rect x="12" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                            <rect x="2" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                            <rect x="12" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="12" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="2" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="12" y="12" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
                         </svg>
                     </button>
                     <button class="view-btn" aria-label="List view">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <rect x="2" y="3" width="16" height="2" rx="1" fill="currentColor"/>
-                            <rect x="2" y="9" width="16" height="2" rx="1" fill="currentColor"/>
-                            <rect x="2" y="15" width="16" height="2" rx="1" fill="currentColor"/>
+                            <rect x="2" y="3" width="16" height="2" rx="1" fill="currentColor" />
+                            <rect x="2" y="9" width="16" height="2" rx="1" fill="currentColor" />
+                            <rect x="2" y="15" width="16" height="2" rx="1" fill="currentColor" />
                         </svg>
                     </button>
                 </div>
@@ -92,11 +146,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Dwarika Prasad Shrestha</h3>
                         <p class="doctor-specialty">Dermatologist & Venereologist</p>
-                        <p class="doctor-description">Dr. Dwarika has over 40 years of experience in dermatologis medicine and is board certified in emergency medicine. She has a special interest in critical care and trauma management.</p>
+                        <p class="doctor-description">Dr. Dwarika has over 40 years of experience in dermatologis
+                            medicine and is board certified in emergency medicine. She has a special interest in
+                            critical care and trauma management.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -111,11 +168,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Parash Shrestha, MD</h3>
                         <p class="doctor-specialty">Consultant Dermatologist & Venereologist</p>
-                        <p class="doctor-description">Dr. Paras is a highly experienced deramatologist and physician with over 15 years of experience. He is board-certified in emergency medicine and has a special interest in disaster management.</p>
+                        <p class="doctor-description">Dr. Paras is a highly experienced deramatologist and physician
+                            with over 15 years of experience. He is board-certified in emergency medicine and has a
+                            special interest in disaster management.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -129,11 +189,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Gajendra Yadav</h3>
                         <p class="doctor-specialty">CONSULTANT ORTHOPEDIC</p>
-                        <p class="doctor-description">He has special interest and deals with Adult & Pediatric Hip, Pelvis & Acetabulum Cases, Hip & Knee Replacement Surgeries. He has been associated with B&B Hospital and HRDC since 2011 AD.</p>
+                        <p class="doctor-description">He has special interest and deals with Adult & Pediatric Hip,
+                            Pelvis & Acetabulum Cases, Hip & Knee Replacement Surgeries. He has been associated with B&B
+                            Hospital and HRDC since 2011 AD.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -148,11 +211,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Anjana Karki</h3>
                         <p class="doctor-specialty">Cardiologist</p>
-                        <p class="doctor-description">Dr. Karki is a renowned cardiologist with over 10 years of experience. She is board-certified in cardiology and has a special interest in interventional cardiology.</p>
+                        <p class="doctor-description">Dr. Karki is a renowned cardiologist with over 10 years of
+                            experience. She is board-certified in cardiology and has a special interest in
+                            interventional cardiology.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -167,11 +233,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Namrata Pradhan</h3>
                         <p class="doctor-specialty">Pediatrician</p>
-                        <p class="doctor-description">Dr. Pradhan is a board-certified pediatrician with extensive experience in managing complex pediatric conditions. She has a special interest in child development.</p>
+                        <p class="doctor-description">Dr. Pradhan is a board-certified pediatrician with extensive
+                            experience in managing complex pediatric conditions. She has a special interest in child
+                            development.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -186,11 +255,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Rajesh Kumar</h3>
                         <p class="doctor-specialty">Psychiatrist</p>
-                        <p class="doctor-description">Dr. Kumar is a highly experienced psychiatrist with over 20 years of experience. He specializes in mental health disorders and has a special interest in anxiety management.</p>
+                        <p class="doctor-description">Dr. Kumar is a highly experienced psychiatrist with over 20 years
+                            of experience. He specializes in mental health disorders and has a special interest in
+                            anxiety management.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -205,11 +277,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Sunita Sharma</h3>
                         <p class="doctor-specialty">Emergency Medicine</p>
-                        <p class="doctor-description">Dr. Sharma is a board-certified emergency medicine physician with over 15 years of experience. She has a special interest in trauma care and critical care management.</p>
+                        <p class="doctor-description">Dr. Sharma is a board-certified emergency medicine physician with
+                            over 15 years of experience. She has a special interest in trauma care and critical care
+                            management.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -224,11 +299,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Amit Patel</h3>
                         <p class="doctor-specialty">Cardiologist</p>
-                        <p class="doctor-description">Dr. Patel is a renowned cardiologist with extensive experience in managing complex cardiac conditions. He is board-certified and has a special interest in preventive cardiology.</p>
+                        <p class="doctor-description">Dr. Patel is a renowned cardiologist with extensive experience in
+                            managing complex cardiac conditions. He is board-certified and has a special interest in
+                            preventive cardiology.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -242,11 +320,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Priya Singh</h3>
                         <p class="doctor-specialty">Gynecologist</p>
-                        <p class="doctor-description">Dr. Singh is a board-certified gynecologist with over 12 years of experience. She specializes in women's health and has a special interest in reproductive health.</p>
+                        <p class="doctor-description">Dr. Singh is a board-certified gynecologist with over 12 years of
+                            experience. She specializes in women's health and has a special interest in reproductive
+                            health.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -261,11 +342,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Vikram Mehta</h3>
                         <p class="doctor-specialty">Pediatric Surgeon</p>
-                        <p class="doctor-description">Dr. Mehta is a highly experienced pediatric surgeon with over 18 years of experience. He specializes in pediatric surgical procedures and has a special interest in minimally invasive surgery.</p>
+                        <p class="doctor-description">Dr. Mehta is a highly experienced pediatric surgeon with over 18
+                            years of experience. He specializes in pediatric surgical procedures and has a special
+                            interest in minimally invasive surgery.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -280,11 +364,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Ramesh Thapa</h3>
                         <p class="doctor-specialty">Emergency Medicine</p>
-                        <p class="doctor-description">Dr. Thapa is a board-certified emergency medicine physician with extensive experience in emergency care. He has a special interest in disaster management and trauma care.</p>
+                        <p class="doctor-description">Dr. Thapa is a board-certified emergency medicine physician with
+                            extensive experience in emergency care. He has a special interest in disaster management and
+                            trauma care.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -298,11 +385,14 @@
                     <div class="doctor-info">
                         <h3 class="doctor-name">Dr. Meera Joshi</h3>
                         <p class="doctor-specialty">Neurologist</p>
-                        <p class="doctor-description">Dr. Joshi is a renowned neurologist with over 14 years of experience. She is board-certified in neurology and has a special interest in stroke management and neurological disorders.</p>
+                        <p class="doctor-description">Dr. Joshi is a renowned neurologist with over 14 years of
+                            experience. She is board-certified in neurology and has a special interest in stroke
+                            management and neurological disorders.</p>
                         <button class="book-now-btn">
                             Book Now
                             <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 6H15M15 6L10 1M15 6L10 11" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -312,7 +402,7 @@
             <!-- Pagination -->
             <div class="pagination">
                 <svg class="pagination-arrow-left" width="16" height="10.97" viewBox="0 0 16 10.97" fill="none">
-                    <path d="M6 0L0 5.5L6 11V8.5L16 8.5V2.5L6 2.5V0Z" fill="#F24570"/>
+                    <path d="M6 0L0 5.5L6 11V8.5L16 8.5V2.5L6 2.5V0Z" fill="#F24570" />
                 </svg>
                 <button class="pagination-button active">1</button>
                 <button class="pagination-button">2</button>
@@ -320,7 +410,7 @@
                 <button class="pagination-button">...</button>
                 <button class="pagination-button">8</button>
                 <svg class="pagination-arrow-right" width="16" height="10.97" viewBox="0 0 16 10.97" fill="none">
-                    <path d="M10 0L16 5.5L10 11V8.5L0 8.5V2.5L10 2.5V0Z" fill="#F24570"/>
+                    <path d="M10 0L16 5.5L10 11V8.5L0 8.5V2.5L10 2.5V0Z" fill="#F24570" />
                 </svg>
             </div>
         </div>
@@ -339,18 +429,18 @@
             <div class="footer-links">
                 <!-- Column 1 -->
                 <div class="link-column">
-                    <a href="#">About Us</a>
-                    <a href="#">Departments</a>
-                    <a href="#">Doctors</a>
-                    <a href="#">Timetable</a>
-                    <a href="#">Appointment</a>
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
                     <a href="#">Testimonials</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="link-column">
-                    <a href="#">Blog</a>
-                    <a href="#">Contact Us</a>
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
                     <a href="#">FAQs</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms and Conditions</a>

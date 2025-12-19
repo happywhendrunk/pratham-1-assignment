@@ -10,6 +10,50 @@
     <link rel="stylesheet" href="about.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const navLinks = document.getElementById('navLinks');
+
+            // 2. Check Authentication Status and Update UI
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
+            async function handleLogout(event) {
+                event.preventDefault();
+                try {
+                    const response = await fetch('http://127.0.0.1:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                    if (response.ok) {
+                        alert('You have been logged out.');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -20,15 +64,24 @@
                 <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
             </div>
 
-            <nav class="nav-links">
-                <a href="#">Home</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="#">Find Carer</a>
-                <a href="#">Blog</a>
+                <a href="blogs.html">Blog</a>
                 <div class="dropdown">
-                    <a href="#">Pages ▾</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
                 </div>
-                <a href="#">Contact</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
             </nav>
 
         </div>
@@ -53,85 +106,105 @@
 
     <!-- Services Section -->
     <section class="services">
-        
+
         <div class="services-content">
             <div class="services-header">
                 <p class="services-label">SERVICES</p>
                 <h2 class="services-title">Provides Our Best Services</h2>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z" fill="#FFFFFF"/>
+                            <path
+                                d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z"
+                                fill="#FFFFFF" />
                         </svg>
                     </div>
                     <h3 class="service-title">Home care</h3>
-                    <p class="service-description">It can be confusing navigating in-home care services, but you've already made the first step.</p>
+                    <p class="service-description">It can be confusing navigating in-home care services, but you've
+                        already made the first step.</p>
                     <button class="service-button">
                         <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z" fill="#FFFFFF"/>
+                            <path
+                                d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z"
+                                fill="#FFFFFF" />
                         </svg>
                     </div>
                     <h3 class="service-title">Care Advisory Service</h3>
-                    <p class="service-description">The aged care system can be difficult to understand and navigate. Harmonie Health is here to help you access the best services.</p>
+                    <p class="service-description">The aged care system can be difficult to understand and navigate.
+                        Harmonie Health is here to help you access the best services.</p>
                     <button class="service-button">
                         <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z" fill="#FFFFFF"/>
+                            <path
+                                d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z"
+                                fill="#FFFFFF" />
                         </svg>
                     </div>
                     <h3 class="service-title">Dementia support</h3>
-                    <p class="service-description">Dementia is not a disease but a general term to describe a collection of symptoms caused by disorders affecting the brain.</p>
+                    <p class="service-description">Dementia is not a disease but a general term to describe a collection
+                        of symptoms caused by disorders affecting the brain.</p>
                     <button class="service-button">
                         <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z" fill="#FFFFFF"/>
+                            <path
+                                d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z"
+                                fill="#FFFFFF" />
                         </svg>
                     </div>
                     <h3 class="service-title">Fun, family and friends</h3>
-                    <p class="service-description">Spending time with family and friends is important. We can make it easier to ensure you don't miss out on any of your favourite activities.</p>
+                    <p class="service-description">Spending time with family and friends is important. We can make it
+                        easier to ensure you don't miss out on any of your favourite activities.</p>
                     <button class="service-button">
                         <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z" fill="#FFFFFF"/>
+                            <path
+                                d="M15.5 2.5H13.5V1.5C13.5 1.22386 13.2761 1 13 1C12.7239 1 12.5 1.22386 12.5 1.5V2.5H6.5V1.5C6.5 1.22386 6.27614 1 6 1C5.72386 1 5.5 1.22386 5.5 1.5V2.5H3.5C2.67157 2.5 2 3.17157 2 4V16C2 16.8284 2.67157 17.5 3.5 17.5H15.5C16.3284 17.5 17 16.8284 17 16V4C17 3.17157 16.3284 2.5 15.5 2.5ZM3.5 3.5H5.5V4.5C5.5 4.77614 5.72386 5 6 5C6.27614 5 6.5 4.77614 6.5 4.5V3.5H12.5V4.5C12.5 4.77614 12.7239 5 13 5C13.2761 5 13.5 4.77614 13.5 4.5V3.5H15.5C15.7761 3.5 16 3.72386 16 4V7H3V4C3 3.72386 3.22386 3.5 3.5 3.5ZM3 8H16V16C16 16.2761 15.7761 16.5 15.5 16.5H3.5C3.22386 16.5 3 16.2761 3 16V8Z"
+                                fill="#FFFFFF" />
                         </svg>
                     </div>
                     <h3 class="service-title">Mental health services</h3>
-                    <p class="service-description">Counseling, therapy, and other services to help patients manage mental health conditions</p>
+                    <p class="service-description">Counseling, therapy, and other services to help patients manage
+                        mental health conditions</p>
                     <button class="service-button">
                         <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.125 18L21.875 12L13.125 6" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -148,56 +221,69 @@
             <div class="why-choose-us-image">
                 <img src="./images/why-choose-us.png" alt="Doctor and patient consultation" class="why-choose-us-img">
             </div>
-            
+
             <div class="why-choose-us-content">
                 <h2 class="why-choose-us-title">Why Choose Us</h2>
-                
+
                 <div class="why-choose-us-points">
                     <div class="why-choose-us-point">
                         <div class="point-icon">
-                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 0L0 4V9C0 13.4183 3.58172 17 8 17C12.4183 17 16 13.4183 16 9V4L9 0L7 0Z" fill="#F24570"/>
+                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 0L0 4V9C0 13.4183 3.58172 17 8 17C12.4183 17 16 13.4183 16 9V4L9 0L7 0Z"
+                                    fill="#F24570" />
                             </svg>
                         </div>
                         <div class="point-content">
                             <h3 class="point-title">Experienced Medical Professionals</h3>
-                            <p class="point-description">Our team includes experienced doctors, nurses, and other healthcare professionals who are dedicated to providing the best possible care to our patients.</p>
+                            <p class="point-description">Our team includes experienced doctors, nurses, and other
+                                healthcare professionals who are dedicated to providing the best possible care to our
+                                patients.</p>
                         </div>
                     </div>
-                    
+
                     <div class="why-choose-us-point">
                         <div class="point-icon">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z" fill="#F24570"/>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z"
+                                    fill="#F24570" />
                             </svg>
                         </div>
                         <div class="point-content">
                             <h3 class="point-title">Comprehensive Services</h3>
-                            <p class="point-description">We offer a wide range of healthcare services, from preventive care to specialized treatment for complex conditions.</p>
+                            <p class="point-description">We offer a wide range of healthcare services, from preventive
+                                care to specialized treatment for complex conditions.</p>
                         </div>
                     </div>
-                    
+
                     <div class="why-choose-us-point">
                         <div class="point-icon">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z" fill="#F24570"/>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z"
+                                    fill="#F24570" />
                             </svg>
                         </div>
                         <div class="point-content">
                             <h3 class="point-title">Patient-centered Approach</h3>
-                            <p class="point-description">We believe in treating each patient as an individual, and we take the time to understand your unique health needs and concerns.</p>
+                            <p class="point-description">We believe in treating each patient as an individual, and we
+                                take the time to understand your unique health needs and concerns.</p>
                         </div>
                     </div>
-                    
+
                     <div class="why-choose-us-point">
                         <div class="point-icon">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z" fill="#F24570"/>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 0L0 5V10C0 14.4183 3.58172 18 8 18C12.4183 18 16 14.4183 16 10V5L9 0Z"
+                                    fill="#F24570" />
                             </svg>
                         </div>
                         <div class="point-content">
                             <h3 class="point-title">State-of-the-art Facilities</h3>
-                            <p class="point-description">Our healthcare center is equipped with the latest technology and equipment to provide our patients with the most advanced care possible.</p>
+                            <p class="point-description">Our healthcare center is equipped with the latest technology
+                                and equipment to provide our patients with the most advanced care possible.</p>
                         </div>
                     </div>
                 </div>
@@ -212,22 +298,22 @@
                 <h2 class="stat-number">20+</h2>
                 <p class="stat-label">Years of experience</p>
             </div>
-            
+
             <div class="stat-item">
                 <h2 class="stat-number">95%</h2>
                 <p class="stat-label">Patient satisfaction rating</p>
             </div>
-            
+
             <div class="stat-item">
                 <h2 class="stat-number">5000+</h2>
                 <p class="stat-label">Patients served annually</p>
             </div>
-            
+
             <div class="stat-item">
                 <h2 class="stat-number">10+</h2>
                 <p class="stat-label">Healthcare providers on staff</p>
             </div>
-            
+
             <div class="stat-item">
                 <h2 class="stat-number">22+</h2>
                 <p class="stat-label">Convenient locations in the area</p>
@@ -241,7 +327,7 @@
             <span class="experts-label">MEET OUR</span>
             <h2 class="experts-title">Experts champs</h2>
         </div>
-        
+
         <div class="experts-grid">
             <!-- Expert Card 1: Dr. Anjana Karki -->
             <div class="expert-card">
@@ -251,16 +337,18 @@
                 <div class="expert-meta">
                     <h3 class="expert-name">Dr. Anjana Karki</h3>
                     <p class="expert-role">Gynaecologist</p>
-                    <p class="expert-description">Dr. Karki is a renowned gynae with over 10 years of experience. She is board-certified in gynaecolog and has a special interest in the treatment.</p>
+                    <p class="expert-description">Dr. Karki is a renowned gynae with over 10 years of experience. She is
+                        board-certified in gynaecolog and has a special interest in the treatment.</p>
                     <button class="expert-button">
                         <span>Learn more</span>
                         <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
             </div>
-            
+
             <!-- Expert Card 2: Dr. Namrata Pradhan -->
             <div class="expert-card">
                 <div class="expert-image-container">
@@ -269,16 +357,19 @@
                 <div class="expert-meta">
                     <h3 class="expert-name">Dr. Namrata Pradhan</h3>
                     <p class="expert-role">Cardiologist</p>
-                    <p class="expert-description">Dr. Namrata is a board-certified cardiologist with extensive experience in the management of complex cardiac conditions. He has a special interest in interventional cardiology</p>
+                    <p class="expert-description">Dr. Namrata is a board-certified cardiologist with extensive
+                        experience in the management of complex cardiac conditions. He has a special interest in
+                        interventional cardiology</p>
                     <button class="expert-button">
                         <span>Learn more</span>
                         <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
             </div>
-            
+
             <!-- Expert Card 3: Ms. Diana Lohtson -->
             <div class="expert-card">
                 <div class="expert-image-container">
@@ -287,11 +378,14 @@
                 <div class="expert-meta">
                     <h3 class="expert-name">Ms. Diana Lohtson</h3>
                     <p class="expert-role">Carer</p>
-                    <p class="expert-description">Ms. Diana is a renowned carer with over 5 years of experience. She is board-certified in cerlv in ageing and disability and has a special interest in the medicine.</p>
+                    <p class="expert-description">Ms. Diana is a renowned carer with over 5 years of experience. She is
+                        board-certified in cerlv in ageing and disability and has a special interest in the medicine.
+                    </p>
                     <button class="expert-button">
                         <span>Book Now</span>
                         <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1 5.5H14M14 5.5L9 1M14 5.5L9 10" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -341,21 +435,21 @@
                 </div>
                 <h3 class="award-name">Malcolm Baldrige National Quality Award</h3>
             </div>
-            
+
             <div class="award-card">
                 <div class="award-icon">
                     <img src="./images/award-icon.png" alt="Award icon" />
                 </div>
                 <h3 class="award-name">HIMSS Davies Award</h3>
             </div>
-            
+
             <div class="award-card">
                 <div class="award-icon">
                     <img src="./images/award-icon.png" alt="Award icon" />
                 </div>
                 <h3 class="award-name">Healthgrades National's Best Hospital</h3>
             </div>
-            
+
             <div class="award-card">
                 <div class="award-icon">
                     <img src="./images/award-icon.png" alt="Award icon" />
@@ -377,7 +471,8 @@
         <div class="footer-hero-overlay"></div>
         <div class="footer-hero-content">
             <h2 class="footer-hero-title">Don't Let Your Health Take a Backseat!</h2>
-            <p class="footer-hero-subtitle">Schedule an appointment with one of our experienced medical professionals today!</p>
+            <p class="footer-hero-subtitle">Schedule an appointment with one of our experienced medical professionals
+                today!</p>
         </div>
     </section>
 
@@ -394,18 +489,18 @@
             <div class="footer-links">
                 <!-- Column 1 -->
                 <div class="link-column">
-                    <a href="#">About Us</a>
-                    <a href="#">Departments</a>
-                    <a href="#">Doctors</a>
-                    <a href="#">Timetable</a>
-                    <a href="#">Appointment</a>
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
                     <a href="#">Testimonials</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="link-column">
-                    <a href="#">Blog</a>
-                    <a href="#">Contact Us</a>
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
                     <a href="#">FAQs</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms and Conditions</a>

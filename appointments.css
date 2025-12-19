@@ -1,0 +1,26 @@
+.contact-hero-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 40px;
+  background: linear-gradient(to right, #f24570, #f6917c);
+}
+
+.contact-form-header {
+  padding: 30px;
+  line-height: 1;
+}
+
+.contact-form-header-sub {
+  font-size: 1rem;
+  color: #274760; /* Subtly lighter text color */
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.contact-form-header {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #274760;
+  margin: 0;
+}

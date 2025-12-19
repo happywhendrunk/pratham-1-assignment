@@ -10,6 +10,94 @@
     <link rel="stylesheet" href="department.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const appointmentForm = document.getElementById('appointmentForm');
+            const navLinks = document.getElementById('navLinks');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', handleAppointmentSubmission);
+            }
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
+            async function handleLogout(event) {
+                event.preventDefault();
+                try {
+                    const response = await fetch('http://127.0.0.1:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                    if (response.ok) {
+                        alert('You have been logged out.');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            }
+        });
+        async function handleAppointmentSubmission(event) {
+            event.preventDefault();
+            const form = event.target;
+
+            const appointmentData = {
+                name: form.name.value,
+                phone: form.phone.value,
+                email: form.email.value,
+                date: form.date.value,
+                time: form.time.value,
+                reason: form.reason ? form.reason.value : "", // Handle radio button safely
+                department: form.department ? form.department.value : "",
+                timestamp: new Date().toISOString(),
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/appointments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(appointmentData),
+                });
+
+                const result = await response.json();
+
+                if (response.status === 401) {
+                    alert('You must be logged in to book an appointment.');
+                    window.location.href = '/login.html'; // Redirect to login
+                    return;
+                }
+
+                if (response.status === 201) {
+                    alert('Your appointment has been scheduled successfully.');
+                    form.reset();
+                    window.location.href = 'index.html'; // Redirect to home
+                } else {
+                    throw new Error(result.message || 'Failed to schedule appointment.');
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert(`Error: ${error.message}`);
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -20,15 +108,24 @@
                 <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
             </div>
 
-            <nav class="nav-links">
-                <a href="#">Home</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="#">Find Carer</a>
-                <a href="#">Blog</a>
+                <a href="blogs.html">Blog</a>
                 <div class="dropdown">
-                    <a href="#">Pages ▾</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
                 </div>
-                <a href="#">Contact</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
             </nav>
         </div>
     </header>
@@ -51,8 +148,8 @@
                     <div class="search-bar">
                         <input type="text" placeholder="Search Doctors" class="search-input">
                         <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                         </svg>
                     </div>
                 </div>
@@ -64,7 +161,9 @@
                 <div class="department-left">
                     <h1 class="department-title">Human Psychology</h1>
                     <p class="department-description">
-                        This department specializes in the care of infants, children, adolescents, and provides a range of services including preventive care, developmental screenings, and treatment of childhood illnesses and conditions.
+                        This department specializes in the care of infants, children, adolescents, and provides a range
+                        of services including preventive care, developmental screenings, and treatment of childhood
+                        illnesses and conditions.
                     </p>
                 </div>
 
@@ -72,19 +171,20 @@
                 <div class="department-right">
                     <div class="department-image-wrapper">
                         <img src="./images/hero_img1.png" alt="Medical professionals" class="department-image">
-                        
+
                         <!-- Floating Card -->
                         <div class="available-doctor-card">
                             <div class="card-header">
                                 <h3 class="card-title">Available Doctor</h3>
                                 <button class="menu-icon" aria-label="Menu">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" />
                                     </svg>
                                 </button>
                             </div>
                             <p class="select-doctor-text">Select Doctor</p>
-                            
+
                             <div class="doctor-list">
                                 <!-- Doctor 1 -->
                                 <div class="doctor-item">
@@ -136,7 +236,8 @@
                         </div>
                     </div>
                     <h3 class="treatment-card-title">Vaccinations Department</h3>
-                    <p class="treatment-card-description">The Pediatric Department provides vaccinations to help protect children from a range of illnesses and diseases, including measles.</p>
+                    <p class="treatment-card-description">The Pediatric Department provides vaccinations to help protect
+                        children from a range of illnesses and diseases, including measles.</p>
                 </div>
 
                 <!-- Treatment Card 2 -->
@@ -147,7 +248,8 @@
                         </div>
                     </div>
                     <h3 class="treatment-card-title">Management of acute illnesses</h3>
-                    <p class="treatment-card-description">The Pediatric Department provides treatment for common childhood illnesses, such as ear infections, strep throat, and viral infections.</p>
+                    <p class="treatment-card-description">The Pediatric Department provides treatment for common
+                        childhood illnesses, such as ear infections, strep throat, and viral infections.</p>
                 </div>
 
                 <!-- Treatment Card 3 -->
@@ -158,7 +260,8 @@
                         </div>
                     </div>
                     <h3 class="treatment-card-title">Treatment of chronic conditions</h3>
-                    <p class="treatment-card-description">The Pediatric Department provides ongoing care and treatment for children with chronic conditions such as asthma, diabetes, and allergies.</p>
+                    <p class="treatment-card-description">The Pediatric Department provides ongoing care and treatment
+                        for children with chronic conditions such as asthma, diabetes, and allergies.</p>
                 </div>
 
                 <!-- Treatment Card 4 -->
@@ -169,7 +272,8 @@
                         </div>
                     </div>
                     <h3 class="treatment-card-title">Developmental screenings</h3>
-                    <p class="treatment-card-description">The Pediatric Department provides regular developmental screenings to identify any delays or concerns and provide early intervention services.</p>
+                    <p class="treatment-card-description">The Pediatric Department provides regular developmental
+                        screenings to identify any delays or concerns and provide early intervention services.</p>
                 </div>
             </div>
         </div>
@@ -190,14 +294,15 @@
                         <span>Related</span>
                         <span>Doctor</span>
                     </h2>
-                    
+
                     <!-- Doctor Profile Card -->
                     <div class="related-doctor-card">
                         <div class="related-doctor-info">
                             <h3 class="related-doctor-name">Dr. Paras Shrestha</h3>
                             <p class="related-doctor-specialty">Paediatrician</p>
-                            <p class="related-doctor-description">With experience in managing complex medical conditions in children</p>
-                            
+                            <p class="related-doctor-description">With experience in managing complex medical conditions
+                                in children</p>
+
                             <!-- Social Media Icons -->
                             <div class="related-doctor-social">
                                 <a href="#" class="social-icon-circle" aria-label="Facebook">
@@ -207,14 +312,16 @@
                                 </a>
                                 <a href="#" class="social-icon-circle" aria-label="LinkedIn">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                                         <rect x="2" y="9" width="4" height="12" />
                                         <circle cx="4" cy="4" r="2" />
                                     </svg>
                                 </a>
                                 <a href="#" class="social-icon-circle" aria-label="Twitter">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                                        <path
+                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
                                     </svg>
                                 </a>
                             </div>
@@ -225,20 +332,26 @@
                             <div>
                                 <button class="action-btn">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" />
                                     </svg>
                                     <span>Availability</span>
                                 </button>
                                 <button class="action-btn">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                     <span>Call</span>
                                 </button>
                                 <button class="action-btn">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                     <span>Chat</span>
                                 </button>
@@ -247,7 +360,8 @@
                                 <button class="action-btn booking-btn">
                                     <span>Booking</span>
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </button>
                             </div>
@@ -266,12 +380,14 @@
                 <div class="navigation-arrows">
                     <button class="nav-arrow-btn" aria-label="Previous">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <button class="nav-arrow-btn" aria-label="Next">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -289,7 +405,7 @@
                     <span class="title-part-2">Appointment</span>
                 </h2>
 
-                <form class="appointment-form">
+                <form id="appointmentForm" class="appointment-form">
                     <!-- Name Field -->
                     <div class="form-group">
                         <label for="name" class="form-label">Name</label>
@@ -304,20 +420,20 @@
 
                     <!-- Medical Record Number Field -->
                     <div class="form-group">
-                        <label for="medical-record" class="form-label">Medical Record Number</label>
-                        <input type="text" id="medical-record" name="medical-record" class="form-input" placeholder="123456-7890-0987">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" id="email" name="email" class="form-input" placeholder="anything@domain.com">
                     </div>
 
                     <!-- Preferred Date Field -->
                     <div class="form-group">
-                        <label for="preferred-date" class="form-label">Preferred Date</label>
-                        <input type="date" id="preferred-date" name="preferred-date" class="form-input" placeholder="dd/mm/yyyy">
+                        <label for="date" class="form-label">Preferred Date</label>
+                        <input type="date" id="date" name="date" class="form-input" placeholder="dd/mm/yyyy">
                     </div>
 
                     <!-- Preferred Time Field -->
                     <div class="form-group">
-                        <label for="preferred-time" class="form-label">Preferred Time</label>
-                        <input type="time" id="preferred-time" name="preferred-time" class="form-input" placeholder="— — — —">
+                        <label for="timestamp" class="form-label">Preferred Time</label>
+                        <input type="time" id="time" name="timestamp" class="form-input" placeholder="— — — —">
                     </div>
 
                     <!-- Reason for Visit Radio Buttons -->
@@ -373,11 +489,14 @@
                     <button type="submit" class="submit-btn">
                         <span>Submit</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </form>
             </div>
+
+
 
             <!-- Right Section: Medical Professionals Image -->
             <div class="appointment-image-wrapper">
@@ -399,18 +518,18 @@
             <div class="footer-links">
                 <!-- Column 1 -->
                 <div class="link-column">
-                    <a href="#">About Us</a>
-                    <a href="#">Departments</a>
-                    <a href="#">Doctors</a>
-                    <a href="#">Timetable</a>
-                    <a href="#">Appointment</a>
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
                     <a href="#">Testimonials</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="link-column">
-                    <a href="#">Blog</a>
-                    <a href="#">Contact Us</a>
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
                     <a href="#">FAQs</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms and Conditions</a>
@@ -464,4 +583,3 @@
 </body>
 
 </html>
-

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonie Health</title>
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="timetable.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const navLinks = document.getElementById('navLinks');
+
+            // 2. Check Authentication Status and Update UI
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
+            async function handleLogout(event) {
+                event.preventDefault();
+                try {
+                    const response = await fetch('http://127.0.0.1:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                    if (response.ok) {
+                        alert('You have been logged out.');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="./index.html"><img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo"></a>
+            </div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="about.html">About</a>
+                <a href="#">Find Carer</a>
+                <a href="blogs.html">Blog</a>
+                <div class="dropdown">
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
+                </div>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="schedule-container">
+        <div class="time-axis">
+            <div class="time-slot" style="grid-row: 1;">8:00 AM</div>
+            <div class="time-slot" style="grid-row: 2;">9:00 AM</div>
+            <div class="time-slot" style="grid-row: 3;">10:00 AM</div>
+            <div class="time-slot" style="grid-row: 4;">11:00 AM</div>
+            <div class="time-slot" style="grid-row: 5;">12:00 PM</div>
+            <div class="time-slot" style="grid-row: 6;">1:00 PM</div>
+            <div class="time-slot" style="grid-row: 7;">2:00 PM</div>
+            <div class="time-slot" style="grid-row: 8;">3:00 PM</div>
+            <div class="time-slot" style="grid-row: 9;">4:00 PM</div>
+            <div class="time-slot" style="grid-row: 10;">5:00 PM</div>
+            <div class="time-slot" style="grid-row: 11;">6:00 PM</div>
+            <div class="time-slot" style="grid-row: 12;">7:00 PM</div>
+            <div class="time-slot" style="grid-row: 13;">8:00 PM</div>
+            <div class="time-slot" style="grid-row: 14;">9:00 PM</div>
+        </div>
+
+        <div class="days-grid">
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 2;">
+                    <div class="department">Pediatric Department</div>
+                    <div class="time">8:00 AM - 9:00 AM</div>
+                    <div class="doctor">Dr. Sarah Patel</div>
+                    <div class="doctor">Dr. David Nguyen</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 2 / span 3;">
+                    <div class="department">Pediatric Department</div>
+                    <div class="time">9:00 AM - 12:00 PM</div>
+                    <div class="doctor">Dr. Sarah Patel</div>
+                    <div class="doctor">Dr. David Nguyen</div>
+                    <div class="room">Room 101</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 5 / span 2;">
+                    <div class="department">Cardiology Department</div>
+                    <div class="time">1:00 PM - 2:00 PM</div>
+                    <div class="doctor">Dr. James Lee</div>
+                    <div class="doctor">Dr. Michelle Kim</div>
+                    <div class="room">Room 202</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 7 / span 2;">
+                    <div class="department">Psychiatry Department</div>
+                    <div class="time">2:00 PM - 4:00 PM</div>
+                    <div class="doctor">Dr. Michael Cortes</div>
+                    <div class="doctor">Dr. David Park</div>
+                    <div class="room">Room 303</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 9 / span 2;">
+                    <div class="department">Physical Therapy Department</div>
+                    <div class="time">5:00 PM - 7:00 PM</div>
+                    <div class="doctor">Dr. Susan Kim</div>
+                    <div class="room bottom-align">Gymnasium</div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 3;">
+                    <div class="department">Obstetrics and Gynecology Department</div>
+                    <div class="time">8:00 AM - 11:00 AM</div>
+                    <div class="doctor">Dr. Karen Lee</div>
+                    <div class="room">Room 401</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 4 / span 3;">
+                    <div class="department">Pulmonology Department</div>
+                    <div class="time">11:30 AM - 2:00 PM</div>
+                    <div class="doctor">Dr. John Smith</div>
+                    <div class="room">Room 502</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 8 / span 2;">
+                    <div class="department">Neurology Department</div>
+                    <div class="time">3:00 PM - 6:00 PM</div>
+                    <div class="doctor">Dr. Marlo Rodriguez</div>
+                    <div class="room">Room 603</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 11 / span 2;">
+                    <div class="department">Emergency Department</div>
+                    <div class="time">6:00 PM - 9:00 PM</div>
+                    <div class="doctor">Dr. Michael Johnson</div>
+                    <div class="doctor">Dr. Lisa Chen</div>
+                    <div class="room bottom-align">Emergency Room</div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 2;">
+                    <div class="department">Pediatric Department</div>
+                    <div class="time">8:00 AM - 9:00 AM</div>
+                    <div class="doctor">Dr. Sarah Patel</div>
+                    <div class="doctor">Dr. David Nguyen</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 3 / span 2;">
+                    <div class="department">Pulmonology Department</div>
+                    <div class="time">11:00 AM - 1:00 PM</div>
+                    <div class="doctor">Dr. John Smith</div>
+                    <div class="room">Room 1C1</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 6 / span 2;">
+                    <div class="department">Cardiology Department</div>
+                    <div class="time">1:00 PM - 4:00 PM</div>
+                    <div class="doctor">Dr. James Lee</div>
+                    <div class="doctor">Dr. Michelle Kim</div>
+                    <div class="room">Room 202</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 9 / span 2;">
+                    <div class="department">Psychiatry Department</div>
+                    <div class="time">4:00 PM - 6:00 PM</div>
+                    <div class="doctor">Dr. Rachel Jones</div>
+                    <div class="doctor">Dr. David Park</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 11 / span 2;">
+                    <div class="department">Physical Therapy Department</div>
+                    <div class="time">6:00 PM - 8:00 PM</div>
+                    <div class="doctor">Dr. Susan Kim</div>
+                    <div class="room bottom-align">Gymnasium</div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 3;">
+                    <div class="department">Obstetrics and Gynecology Department</div>
+                    <div class="time">9:00 AM - 12:00 PM</div>
+                    <div class="doctor">Dr. Karen Lee</div>
+                    <div class="room">Room 401</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 4 / span 3;">
+                    <div class="department">Pulmonology Department</div>
+                    <div class="time">11:00 AM - 2:00 PM</div>
+                    <div class="doctor">Dr. John Smith</div>
+                    <div class="room">Room 502</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 7 / span 2;">
+                    <div class="department">Neurology Department</div>
+                    <div class="time">3:00 PM - 6:00 PM</div>
+                    <div class="doctor">Dr. Maria Rodriguez</div>
+                    <div class="room">Room 603</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 10 / span 3;">
+                    <div class="department">Emergency Department</div>
+                    <div class="time">6:00 PM - 9:00 PM</div>
+                    <div class="doctor">Dr. Michael Johnson</div>
+                    <div class="doctor">Dr. Lisa Chen</div>
+                    <div class="room bottom-align">Emergency Room</div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 2;">
+                    <div class="department">Pediatric Department</div>
+                    <div class="time">9:00 AM - 11:00 AM</div>
+                    <div class="doctor">Dr. Sarah Patel</div>
+                    <div class="doctor">Dr. David Nguyen</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 4 / span 2;">
+                    <div class="department">Cardiology Department</div>
+                    <div class="time">12:00 PM - 2:00 PM</div>
+                    <div class="doctor">Dr. James Lee</div>
+                    <div class="doctor">Dr. Michelle Kim</div>
+                    <div class="room">Room 202</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 7 / span 2;">
+                    <div class="department">Psychiatry Department</div>
+                    <div class="time">3:00 PM - 5:00 PM</div>
+                    <div class="doctor">Dr. Rachel Jones</div>
+                    <div class="doctor">Dr. David Park</div>
+                    <div class="room">Room 303</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 9 / span 2;">
+                    <div class="department">Physical Therapy Department</div>
+                    <div class="time">6:00 PM - 9:00 PM</div>
+                    <div class="doctor">Dr. Susan Kim</div>
+                    <div class="room bottom-align">Gymnasium</div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="appointment" style="grid-row: 1 / span 3;">
+                    <div class="department">Obstetrics and Gynecology Department</div>
+                    <div class="time">9:00 AM - 12:00 PM</div>
+                    <div class="doctor">Dr. Karen Lee</div>
+                    <div class="room">Room 491</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 4 / span 3;">
+                    <div class="department">Pulmonology Department</div>
+                    <div class="time">12:00 PM - 2:00 PM</div>
+                    <div class="doctor">Dr. John Smith</div>
+                    <div class="room">Room 502</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 7 / span 2;">
+                    <div class="department">Neurology Department</div>
+                    <div class="time">3:00 PM - 6:00 PM</div>
+                    <div class="doctor">Dr. Marlo Rodriguez</div>
+                    <div class="room">Room 603</div>
+                </div>
+
+                <div class="appointment" style="grid-row: 10 / span 3;">
+                    <div class="department">Emergency Department</div>
+                    <div class="time">5:00 PM - 9:00 PM</div>
+                    <div class="doctor">Dr. Michael Johnson</div>
+                    <div class="doctor">Dr. Lisa Chen</div>
+                    <div class="room bottom-align">Emergency Room</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <!-- Shield Logo -->
+        <div class="shield-container">
+            <div class="shield">
+                <img class="logo-image" src="/images/Frame.png" alt="footer logo">
+            </div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Column 1 -->
+                <div class="link-column">
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
+                    <a href="#">Testimonials</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="link-column">
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter">
+                    <h3>Be Our Subscribers</h3>
+                    <p>To get the latest news about Harmonie health from our experts</p>
+                    <div class="email-form">
+                        <input type="email" placeholder="example@email.com">
+                        <button type="submit">
+                            Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="social-links">
+                <span>Follow Us</span>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                            stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                        <circle cx="18" cy="6" r="1.5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="copyright">
+                Copyright © 2024 All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

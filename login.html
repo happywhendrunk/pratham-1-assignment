@@ -8,6 +8,86 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const signInForm = document.getElementById('signInForm');
+            if (signInForm) {
+                signInForm.addEventListener('submit', handleLoginSubmission);
+            }
+            const navLinks = document.getElementById('navLinks');
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/auth-status', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    // Remove existing Login links
+                    const loginLinks = document.querySelectorAll('a[href="login.html"]');
+                    loginLinks.forEach(link => link.remove());
+
+                    // Inject Dashboard and Logout links
+                    navLinks.insertAdjacentHTML('beforeend', `
+                    <a href="user-dashboard.html">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                `);
+
+                    document.getElementById('logoutBtn').onclick = handleLogout;
+                }
+            } catch (error) {
+                console.log("User not logged in:", error);
+            }
+            async function handleLogout(event) {
+                event.preventDefault();
+                try {
+                    const response = await fetch('http://127.0.0.1:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+
+                    if (response.ok) {
+                        alert('You have been logged out.');
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                }
+            }
+        });
+
+        async function handleLoginSubmission(event) {
+            event.preventDefault();
+            const form = event.target;
+
+            const loginData = {
+                email: form.email.value,
+                password: form.password.value
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loginData),
+                    credentials: 'include'
+                });
+
+                const result = await response.json();
+
+                if (response.status === 200) {
+                    alert('Login Successful! Redirecting...');
+                    form.reset();
+                    window.location.href = 'index.html'; // Redirect to home/dashboard
+                } else if (response.status === 401) {
+                    alert('Error: ' + (result.error || 'Invalid email or password.'));
+                } else {
+                    throw new Error(result.error || 'Something went wrong on the server.');
+                }
+            } catch (error) {
+                console.error("Login Error:", error);
+                alert(`Error: ${error.message}. Please check if the server is running.`);
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -17,13 +97,21 @@
                 <img class="logo-img" src="./images/logo1.png" alt="Harmonie Health Logo">
             </div>
 
-            <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">About</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
                 <a href="#">Find Carer</a>
-                <a href="#">Blog</a>
+                <a href="blogs.html">Blog</a>
                 <div class="dropdown">
-                    <a href="#">Pages ▾</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Pages</a>
+                        <div class="dropdown-content">
+                            <a href="/department.html">Departments</a>
+                            <a href="/find-doctor.html">Doctors</a>
+                            <a href="/timetable.html">Timetable</a>
+                            <a href="/appointments.html">Appointment</a>
+                        </div>
+                    </li>
                 </div>
                 <a href="/contact.html">Contact</a>
             </nav>
@@ -85,18 +173,18 @@
             <div class="footer-links">
                 <!-- Column 1 -->
                 <div class="link-column">
-                    <a href="#">About Us</a>
-                    <a href="#">Departments</a>
-                    <a href="#">Doctors</a>
-                    <a href="#">Timetable</a>
-                    <a href="#">Appointment</a>
+                    <a href="about.html">About Us</a>
+                    <a href="department.html">Departments</a>
+                    <a href="find-doctor.html">Doctors</a>
+                    <a href="timetable.html">Timetable</a>
+                    <a href="appointments.html">Appointment</a>
                     <a href="#">Testimonials</a>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="link-column">
-                    <a href="#">Blog</a>
-                    <a href="#">Contact Us</a>
+                    <a href="blogs.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
                     <a href="#">FAQs</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms and Conditions</a>
